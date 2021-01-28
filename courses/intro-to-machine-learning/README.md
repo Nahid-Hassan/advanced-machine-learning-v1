@@ -18,6 +18,14 @@ Machine Learning is all about learning from examples.
       - [Features and Labels Musical Example](#features-and-labels-musical-example)
       - [Features Visualization Quiz](#features-visualization-quiz)
       - [Classification By Eye](#classification-by-eye)
+      - [Speed Scatterplot: Grade and Bumpiness](#speed-scatterplot-grade-and-bumpiness)
+      - [Speed Scatterplot 2](#speed-scatterplot-2)
+      - [Speed Scatterplot 3](#speed-scatterplot-3)
+      - [From Scatterplots to Predictions](#from-scatterplots-to-predictions)
+      - [From Scatterplots to Decision Surfaces](#from-scatterplots-to-decision-surfaces)
+      - [A Good Linear Decision Surface](#a-good-linear-decision-surface)
+      - [NB Decision Boundary in Python](#nb-decision-boundary-in-python)
+      - [Gaussian NB Example](#gaussian-nb-example)
 
 ### Naive Bayes
 
@@ -72,3 +80,38 @@ Now `Katie`(Instructor name) brain,
 ![Classification By Eye](images/3.png)
 
 > We agree the test point does not fall into a clear category.
+
+#### Speed Scatterplot: Grade and Bumpiness
+
+![Speed Scatterplot](images/4.png)
+
+#### Speed Scatterplot 2
+
+![Speed Scatterplot 2](images/5.png)
+
+#### Speed Scatterplot 3
+
+![Speed Scatterplot 3](images/6.png)
+
+#### From Scatterplots to Predictions
+
+![From Scatterplots to Predictions](images/7.png)
+
+#### From Scatterplots to Decision Surfaces
+
+![From Scatterplots to Decision Surfaces](images/8.png)
+
+#### A Good Linear Decision Surface
+
+![A Good Linear Decision Surface](images/9.png)
+
+#### NB Decision Boundary in Python
+
+![NB Decision Boundary in Python](images/10.png)
+
+#### Gaussian NB Example
+
+Getting Started With sklearn
+
+`search` **sklearn naive bayes** on google.
+
