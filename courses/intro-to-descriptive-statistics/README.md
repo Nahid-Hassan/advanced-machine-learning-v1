@@ -20,6 +20,8 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [Difference Between Graphs](#difference-between-graphs)
       - [Interpret Histogram](#interpret-histogram)
       - [Skewed Distribution](#skewed-distribution)
+    - [Problem Set - 1: (Visualize Data)](#problem-set---1-visualize-data)
+      - [Blood Types](#blood-types)
 
 ### Visualizing Data
 
@@ -144,9 +146,9 @@ con_stu.plot.bar(rot=0)
 
 **Graph** for the above code...
 
-|        Histogram        | Bar plot |
-| :---------------------: | :------: |
-| ![hist](images/hist.png) | ![bar](images/bar.png)
+|        Histogram         |        Bar plot        |
+| :----------------------: | :--------------------: |
+| ![hist](images/hist.png) | ![bar](images/bar.png) |
 
 #### Difference Between Graphs
 
@@ -159,3 +161,26 @@ con_stu.plot.bar(rot=0)
 #### Skewed Distribution
 
 ![skewed distribution](images/9.png)
+
+### Problem Set - 1: (Visualize Data)
+
+#### Blood Types
+
+How to calculate,
+
+```py
+from collections import Counter
+# O map-to 1
+# A map-to 2
+# B map-to 3
+# C map-to 4
+a = [1, 1, 2, 1, 1, 2, 2, 3, 2, 1, 1, 1, 1, 4, 1, 2, 1,
+     2, 1, 2, 3, 2, 1, 2, 3, 4, 1, 2, 1, 3, 2, 2, 1, 2, 1]
+
+for item, freq in Counter(a).items():
+    print(freq, round(freq / len(a), 3), round(freq / len(a) * 100, 3))
+```
+
+The `Σ` symbol means the total sum. It is the Greek letter capital `sigma`. `f` stands for frequency (count), `p` stands for proportion.
+
+![blood](images/10.png)
