@@ -22,6 +22,8 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [Skewed Distribution](#skewed-distribution)
     - [Problem Set - 1: (Visualize Data)](#problem-set---1-visualize-data)
       - [Blood Types](#blood-types)
+      - [Bin/Interval Size](#bininterval-size)
+      - [22. Commute an Hour](#22-commute-an-hour)
 
 ### Visualizing Data
 
@@ -174,6 +176,7 @@ from collections import Counter
 # A map-to 2
 # B map-to 3
 # C map-to 4
+
 a = [1, 1, 2, 1, 1, 2, 2, 3, 2, 1, 1, 1, 1, 4, 1, 2, 1,
      2, 1, 2, 3, 2, 1, 2, 3, 4, 1, 2, 1, 3, 2, 2, 1, 2, 1]
 
@@ -184,3 +187,17 @@ for item, freq in Counter(a).items():
 The `Σ` symbol means the total sum. It is the Greek letter capital `sigma`. `f` stands for frequency (count), `p` stands for proportion.
 
 ![blood](images/10.png)
+
+**Decision**:
+
+- Most **rare** blood type is **AB**.
+- Most **common** blood type is **O**.
+- Proportion of type `A` is `.37`.
+
+#### Bin/Interval Size
+
+`105 - 15 = 90`. This is `10` bins of size `9` between `15 and 105`.
+
+#### 22. Commute an Hour
+
+![Hour](images/11.png)
