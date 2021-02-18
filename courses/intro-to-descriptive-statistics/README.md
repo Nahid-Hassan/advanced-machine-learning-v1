@@ -45,7 +45,7 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
 
 #### Frequency
 
-In statistics the frequency (or absolute frequency) of an event ***n<sub>i</sub>*** is the number ***n<sub>i</sub>*** of times the observation occurred/recorded in an experiment or study. These frequencies are often graphically represented in `histograms`.
+In statistics the frequency (or absolute frequency) of an event ***n`<sub>`i</sub>*** is the number ***n`<sub>`i</sub>*** of times the observation occurred/recorded in an experiment or study. These frequencies are often graphically represented in `histograms`.
 
 **Types**:
 
@@ -55,9 +55,9 @@ The `relative frequency` (or `empirical probability`) of an event is the absolut
 
 ![Relative Frequency](https://wikimedia.org/api/rest_v1/media/math/render/svg/61bca88bb54862d881e92de20c5fa6a4c5626df1)
 
-The values of ***f<sub>i</sub>*** for all events ***i*** can be plotted to produce a frequency distribution.
+The values of ***f`<sub>`i</sub>*** for all events ***i*** can be plotted to produce a frequency distribution.
 
-In the case when ***n<sub>i</sub> = 0*** for certain ***i***, pseudocounts can be added.
+In the case when ***n`<sub>`i</sub> = 0*** for certain ***i***, pseudocounts can be added.
 
 ```py
 from collections import Counter
