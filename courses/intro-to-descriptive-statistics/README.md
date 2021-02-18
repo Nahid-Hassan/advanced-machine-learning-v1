@@ -24,6 +24,22 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [Blood Types](#blood-types)
       - [Bin/Interval Size](#bininterval-size)
       - [22. Commute an Hour](#22-commute-an-hour)
+    - [Central Tendency](#central-tendency)
+      - [Which number to choose](#which-number-to-choose)
+      - [`Mode` of Distribution](#mode-of-distribution)
+      - [Uniform Distribution](#uniform-distribution)
+      - [More than one modes](#more-than-one-modes)
+      - [Mode on Categorical Data](#mode-on-categorical-data)
+      - [More on Mode](#more-on-mode)
+      - [Mode in Python](#mode-in-python)
+      - [Find the `Mean`](#find-the-mean)
+      - [Mean in Python](#mean-in-python)
+      - [Properties of Mean](#properties-of-mean)
+      - [Mean with Outlier](#mean-with-outlier)
+      - [Requirement and find the Median](#requirement-and-find-the-median)
+      - [Median with Outlier](#median-with-outlier)
+      - [Formula for Location for Median](#formula-for-location-for-median)
+      - [Measures of Center](#measures-of-center)
 
 ### Visualizing Data
 
@@ -201,3 +217,150 @@ The `Σ` symbol means the total sum. It is the Greek letter capital `sigma`. `f`
 #### 22. Commute an Hour
 
 ![Hour](images/11.png)
+
+### Central Tendency
+
+![images](images/12.png)
+
+#### Which number to choose
+
+![images](images/13.png)
+
+- **Mode**: The mode is the value that `appears most often in a set of data values`. ... If `X` is a discrete `random` variable, the mode is the value x (i.e, X = x) at which the `probability mass function` takes its `maximum` value. In other words, it is the value that is most `likely to be sampled`.
+
+#### `Mode` of Distribution
+
+Mode: Highest frequency's bean.
+
+![images](images/14.png)
+
+> Note: Uniform distribution has no mode.
+
+#### Uniform Distribution
+
+Picture of uniform distribution..
+
+![images](images/15.png)
+
+#### More than one modes
+
+Many distribution has more than one mode. Example image of bi-modal distribution...
+
+![bi-modal-distribution](https://lh3.googleusercontent.com/proxy/v8-WWT9-ep5K3hotHucyrZWZwugoMbZ7WfbTfp4CjxkZjfbAr_NPwarJ7Yuma6owTZlF-cUl9JlFxK_6Qyx9x-mYut6ODgj3bh7F269_iXiW8oE)
+
+#### Mode on Categorical Data
+
+![images](images/16.png)
+
+> Note: Remember, the mode occurs on the X-axis, so you are looking for whatever value has the highest frequency.
+
+#### More on Mode
+
+![images](images/17.png)
+
+#### Mode in Python
+
+```python
+import statistics
+
+# using statistics module
+statistics.mode([1,2,3,4,5,1,2,3,1]) # 1
+statistics.multimode([[1,2,3,4,5,1,2,3,1,2,3]]) # [1,2,3]
+
+# using user defined function
+def find_mode(sample):
+    val_counts_map = {}
+
+    # count the frequency
+    for samp in sample:
+        if samp in val_counts_map.keys():
+            val_counts_map[samp] += 1
+        else:
+            val_counts_map[samp] = 1
+
+
+    # find the max freq key
+    max_freq = max(val_counts_map.values())
+
+    # multimode
+    result = list()
+    for key, values in val_counts_map.items():
+        if max_freq == values:
+            result.append(key)
+
+    return result
+
+find_mode([1,2,1,1,3,4,5,2,1,2,2,4,4]) # [1,2]
+```
+
+#### Find the `Mean`
+
+![images](images/18.png)
+
+#### Mean in Python
+
+```python
+import statistics
+
+values = [1,2,3,4,5,6,7,8,9,10]
+
+# using statistics module
+print(statistics.mean(values)) # 5.5
+
+# using user defined function
+def find_mean(sample):
+  return sum(sample) / len(sample)
+
+print(find_mean(sample)) # 5.5
+```
+
+**Helpful Symbols**:
+
+![images](images/19.png)
+
+#### Properties of Mean
+
+[![Image Alt Text Here](https://img.youtube.com/vi/AqlvTMZg6HY/0.jpg)](https://www.youtube.com/watch?v=AqlvTMZg6HY)
+
+#### Mean with Outlier
+
+![images](images/20.png)
+
+#### Requirement and find the Median
+
+![images](images/21.png)
+
+#### Median with Outlier
+
+![images](images/22.png)
+
+![images](images/23.png)
+
+#### Formula for Location for Median
+
+[![Image Alt Text Here](https://img.youtube.com/vi/lNYLU1b4qoM/0.jpg)](https://www.youtube.com/watch?v=lNYLU1b4qoM)
+
+#### Measures of Center
+
+[![Image Alt Text Here](https://img.youtube.com/vi/CBaw2pGOO3A/0.jpg)](https://www.youtube.com/watch?v=CBaw2pGOO3A)
+
+**Code for Median**:
+
+```py
+# using statistics module
+statistics.median([1,2,3,4,3,2,2,4,2])
+
+# user defined function
+sample = [1,2,3,4,5,6,1,4,2]
+
+def find_median(sample):
+    # first ordering the sample using sort function
+    sample.sort()
+
+    if len(sample) % 2 == 0:
+        return (sample[len(sample) // 2] + sample[len(sample) // 2 + 1]) / 2
+    else:
+        return sample[len(sample) // 2]
+
+find_median(sample)
+```
