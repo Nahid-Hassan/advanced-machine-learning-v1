@@ -40,6 +40,24 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [Median with Outlier](#median-with-outlier)
       - [Formula for Location for Median](#formula-for-location-for-median)
       - [Measures of Center](#measures-of-center)
+    - [Variability](#variability)
+      - [Social Networker's Salaries](#social-networkers-salaries)
+      - [What is the difference](#what-is-the-difference)
+      - [Quantify Spread](#quantify-spread)
+      - [Mark Z Outlier](#mark-z-outlier)
+      - [Quartile](#quartile)
+      - [Inter-quartile Range(IQR)](#inter-quartile-rangeiqr)
+      - [Outlier and Define Outlier](#outlier-and-define-outlier)
+      - [Box-plot](#box-plot)
+      - [`Mean` with `IQR`](#mean-with-iqr)
+      - [Problem with IQR](#problem-with-iqr)
+      - [Measure Variability](#measure-variability)
+      - [Deviation](#deviation)
+      - [Be Happy and Get Rid of Negatives](#be-happy-and-get-rid-of-negatives)
+      - [Average Absolute Deviation and Formula of Absolute Deviation](#average-absolute-deviation-and-formula-of-absolute-deviation)
+      - [SS ( Sum of Squared)](#ss--sum-of-squared)
+      - [Average Squared Deviation or `Variance`](#average-squared-deviation-or-variance)
+      - [Average Squared Deviation in Words](#average-squared-deviation-in-words)
 
 ### Visualizing Data
 
@@ -364,3 +382,137 @@ def find_median(sample):
 
 find_median(sample)
 ```
+
+### Variability
+
+#### Social Networker's Salaries
+
+Symmetrical Distribution, that's why **mean**, **mode**, **median** are same.
+
+![images](images/25.png)
+
+#### What is the difference
+
+- More less spread distribution is more consistent.
+- We actually don't know that people who has highest salary has social account or not?
+
+![images](images/26.png)
+
+#### Quantify Spread
+
+- **Range**: is the difference between the maximum value and the minimum value observed.
+
+```py
+def calculate_range(sample):
+    return max(sample) - min(sample)
+
+# generate random sample
+import random
+
+sample = [random.randint(50,120) * 965 for _ in range(10)]
+
+calculate_range(sample)
+```
+
+![images](images/27.png)
+
+**Does `range` change?**:
+
+- If we add data between previous range then range is not change. But if we add data more than the previous maximum
+or minimum then range is change.
+
+![images](images/28.png)
+
+#### Mark Z Outlier
+
+![images](images/29.png)
+
+#### Quartile
+
+**What is the Q1(25%)**:
+
+![images](images/30.png)
+
+**Q3 - Q1**:
+
+![images](images/31.png)
+
+#### Inter-quartile Range(IQR)
+
+![images](images/32.png)
+
+#### Outlier and Define Outlier
+
+```text
+Outlier < Q1 - 1.5(IQR)
+        > Q2 + 1.5(IQR)
+```
+
+```py
+def outlier(sample):
+    # calculate inter-quartile
+    q3, q1 = np.percentile(data, [75, 25])
+    iqr = q3 - q1
+
+    outliers = ((q1 - 1.5 * iqr), (q3 + 1.5 * iqr))
+    return outliers
+
+data = np.array([38946, 43420, 49191, 50430, 50557, 52580, 53595, 54135, 60181, 10000000])
+print(outlier(data)) # (42751.875, 60748.875)
+```
+
+![images](images/33.png)
+
+**Answer**: is last 3 points >=60,748
+
+#### Box-plot
+
+![images](images/34.png)
+
+> "min" and "max" in this context mean the smallest and largest values from the sample that are not outliers.
+
+**Match Boxplot**:
+
+![images](images/35.png)
+
+- `C` : With Z. Because with Z. has an outlier.
+- `A` : Less Spread.
+- `B` : More Spread.
+
+#### `Mean` with `IQR`
+
+![images](images/36.png)
+
+- The `median` is always between `Q1` and `Q3`, but remember that the `mean` is `sensitive` to `outliers`.
+
+#### Problem with IQR
+
+- The problem with `IQR` is it is same in different sample of data. Like Symmetrical, Bi-modal and Uniform.
+
+#### Measure Variability
+
+![images](images/37.png)
+
+#### Deviation
+
+![images](images/38.png)
+
+#### Be Happy and Get Rid of Negatives
+
+![images](images/39.png)
+
+#### Average Absolute Deviation and Formula of Absolute Deviation
+
+![images](images/41.png)
+
+#### SS ( Sum of Squared)
+
+![images](images/42.png)
+
+#### Average Squared Deviation or `Variance`
+
+![images](images/43.png)
+
+#### Average Squared Deviation in Words
+
+![images](images/44.png)
