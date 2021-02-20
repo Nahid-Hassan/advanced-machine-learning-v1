@@ -63,6 +63,18 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [SD Social Networkers](#sd-social-networkers)
       - [Point of SD](#point-of-sd)
       - [Bessel's Corrections](#bessels-corrections)
+    - [Standardizing](#standardizing)
+      - [Absolute or Relative](#absolute-or-relative)
+      - [Relative Frequency Histogram](#relative-frequency-histogram)
+      - [Continuous Distribution](#continuous-distribution)
+      - [Theoretical Distribution](#theoretical-distribution)
+      - [Unpopular](#unpopular)
+      - [Formula for number of `SD's`](#formula-for-number-of-sds)
+      - [Z-score](#z-score)
+      - [Mean of Standardized Distribution](#mean-of-standardized-distribution)
+      - [SD of Standardized Distribution](#sd-of-standardized-distribution)
+      - [Popular Chris](#popular-chris)
+      - [Convert to Z-score and  Popularity Score](#convert-to-z-score-and--popularity-score)
 
 ### Visualizing Data
 
@@ -583,3 +595,71 @@ std(sample_data)
 > If you need to calculate approximate SD from sample for population use `n-1` else `n`
 
 ![images](images/49.png)
+
+### Standardizing
+
+#### Absolute or Relative
+
+![images](images/50.png)
+
+#### Relative Frequency Histogram
+
+![images](images/51.png)
+
+#### Continuous Distribution
+
+![images](images/52.png)
+
+#### Theoretical Distribution
+
+![images](images/53.png)
+
+#### Unpopular
+
+| Katie                    | Andy                     |
+| ------------------------ | ------------------------ |
+| ![images](images/54.png) | ![images](images/55.png) |
+
+**Now who is more unpopular?**:
+
+[![Image Alt Text Here](https://img.youtube.com/vi/W5qXCZ-nrHM/0.jpg)](https://www.youtube.com/watch?v=W5qXCZ-nrHM)
+
+#### Formula for number of `SD's`
+
+```py
+# suppose we are already know the mean(average) and SD
+
+mean_value = 190
+sd = 36
+point = 88
+
+number_of_sd = (mean_value - point) / sd
+print(number_of_sd)
+```
+
+![images](images/56.png)
+
+#### Z-score
+
+```py
+z = (point - mean_value) / sd
+print(z)
+```
+
+![images](images/57.png)
+
+#### Mean of Standardized Distribution
+
+![images](images/58.png)
+
+#### SD of Standardized Distribution
+
+![images](images/59.png)
+
+#### Popular Chris
+
+![images](images/60.png)
+
+#### Convert to Z-score and  Popularity Score
+
+![images](images/61.png)
