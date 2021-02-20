@@ -58,6 +58,11 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [SS ( Sum of Squared)](#ss--sum-of-squared)
       - [Average Squared Deviation or `Variance`](#average-squared-deviation-or-variance)
       - [Average Squared Deviation in Words](#average-squared-deviation-in-words)
+      - [One Dimension or SD](#one-dimension-or-sd)
+      - [Calculate SD(Standard Deviation)](#calculate-sdstandard-deviation)
+      - [SD Social Networkers](#sd-social-networkers)
+      - [Point of SD](#point-of-sd)
+      - [Bessel's Corrections](#bessels-corrections)
 
 ### Visualizing Data
 
@@ -511,8 +516,70 @@ print(outlier(data)) # (42751.875, 60748.875)
 
 #### Average Squared Deviation or `Variance`
 
+```py
+sample_data = [33219, 36254, 38801,46335,46840,47546,55130,56863,78070,88830]
+
+def variance(sample_data):
+    # calculate mean
+    mean = sum(sample_data) / len(sample_data)
+    # total data point
+    total_element = len(sample_data)
+
+    sum_squared_deviation = 0
+    for data in sample_data:
+        sum_squared_deviation += (data - mean) ** 2
+
+    # avg_squared dev
+    return sum_squared_deviation / total_element
+
+variance(sample_data)
+```
+
 ![images](images/43.png)
 
 #### Average Squared Deviation in Words
 
 ![images](images/44.png)
+
+#### One Dimension or SD
+
+![images](images/45.png)
+
+#### Calculate SD(Standard Deviation)
+
+**Standard Deviation**: SD is the most common way to calculate `spread`.
+
+```text
+  SD, σ(sigma) = √variance
+```
+
+![images](images/46.png)
+
+#### SD Social Networkers
+
+```py
+sample_data = [38946, 43420, 49191, 50430, 50557, 52580, 53595, 54135, 60181, 62076]
+
+def std(sample_data):
+    mean = sum(sample_data) / len(sample_data)
+    total = 0
+    for data in sample_data:
+        total += (data - mean) ** 2
+    return math.sqrt(total / len(sample_data))
+
+std(sample_data)
+```
+
+[![Image Alt Text Here](https://img.youtube.com/vi/cy8BwWl36Q4/0.jpg)](https://www.youtube.com/watch?v=cy8BwWl36Q4)
+
+#### Point of SD
+
+[![Image Alt Text Here](https://img.youtube.com/vi/d-_ZKyocTDw/0.jpg)](https://www.youtube.com/watch?v=d-_ZKyocTDw)
+
+![images](images/48.png)
+
+#### Bessel's Corrections
+
+> If you need to calculate approximate SD from sample for population use `n-1` else `n`
+
+![images](images/49.png)
