@@ -49,3 +49,4 @@ plt.xlabel('Loss')
 plt.ylabel('Epochs')
 plt.plot(history.history['loss'])
 plt.show()
+
