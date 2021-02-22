@@ -75,6 +75,16 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [SD of Standardized Distribution](#sd-of-standardized-distribution)
       - [Popular Chris](#popular-chris)
       - [Convert to Z-score and  Popularity Score](#convert-to-z-score-and--popularity-score)
+    - [Normal Distribution](#normal-distribution)
+      - [Intro to PDF](#intro-to-pdf)
+      - [Probability](#probability)
+      - [Get to know the PDF](#get-to-know-the-pdf)
+      - [SD below or Above the Mean](#sd-below-or-above-the-mean)
+      - [Proportions of Facebook's Friends](#proportions-of-facebooks-friends)
+      - [Using the Z-Table](#using-the-z-table)
+      - [Karma  Points](#karma--points)
+      - [Area In between 10 and 16](#area-in-between-10-and-16)
+      - [Top 5%](#top-5)
 
 ### Visualizing Data
 
@@ -663,3 +673,83 @@ print(z)
 #### Convert to Z-score and  Popularity Score
 
 ![images](images/61.png)
+
+### Normal Distribution
+
+#### Intro to PDF
+
+`PDF`: Probability Density Function.
+
+![images](images/62.png)
+
+#### Probability
+
+![images](images/63.png)
+
+**Note**: `Absolute frequency`, `Relative frequency` and `Cumulative frequency`.
+
+![images](images/64.png)
+
+#### Get to know the PDF
+
+![images](images/65.png)
+
+**Probability Greater**:
+
+![images](images/66.png)
+
+> This probability is in fact much, much lower than 0.01 - about one in 3.5 million!
+
+**Probability Less**:
+
+![images](images/67.png)
+
+#### SD below or Above the Mean
+
+![images](images/68.png)
+
+#### Proportions of Facebook's Friends
+
+![images](images/69.png)
+
+**Between 118 and 226**:
+
+![images](images/70.png)
+
+**Below the 240**:
+
+```text
+> 13.5 * 14 / 36 # Hence 36 -> 13.5%, So, 14 -> 13.5 * 14 / 36
+> 5.25
+> 84 + 5.25
+89.25 # Approximate probability
+```
+
+![images](images/71.png)
+
+#### Using the Z-Table
+
+![images](images/72.png)
+
+#### Karma  Points
+
+**Integer SD**:
+
+![images](images/73.png)
+
+**Less than 5**:
+
+![images](images/74.png)
+
+**More than 20**:
+
+![images](images/75.png)
+
+#### Area In between 10 and 16
+
+![images](images/76.png)
+
+#### Top 5%
+
+![images](images/77.png)
+
