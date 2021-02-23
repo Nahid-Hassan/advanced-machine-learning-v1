@@ -85,6 +85,9 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [Karma  Points](#karma--points)
       - [Area In between 10 and 16](#area-in-between-10-and-16)
       - [Top 5%](#top-5)
+    - [Sampling Distributions](#sampling-distributions)
+      - [Compare Sample `Means`](#compare-sample-means)
+      - [Total Sample and Mean of each Sample](#total-sample-and-mean-of-each-sample)
 
 ### Visualizing Data
 
@@ -753,3 +756,12 @@ print(z)
 
 ![images](images/77.png)
 
+### Sampling Distributions
+
+#### Compare Sample `Means`
+
+![images](images/78.png)
+
+#### Total Sample and Mean of each Sample
+
+![images](images/79.png)
