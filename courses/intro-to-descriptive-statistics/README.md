@@ -88,6 +88,15 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
     - [Sampling Distributions](#sampling-distributions)
       - [Compare Sample `Means`](#compare-sample-means)
       - [Total Sample and Mean of each Sample](#total-sample-and-mean-of-each-sample)
+      - [Calculate SD](#calculate-sd)
+      - [SD of Sampling Mean](#sd-of-sampling-mean)
+      - [The Central Limit Theorem](#the-central-limit-theorem)
+      - [Roll 1 Die](#roll-1-die)
+      - [Roll 2 Die](#roll-2-die)
+      - [Find Standard Error](#find-standard-error)
+      - [Standard Error for Avg of 5 Dice](#standard-error-for-avg-of-5-dice)
+      - [M&MS](#mms)
+      - [M&MS CLT](#mms-clt)
 
 ### Visualizing Data
 
@@ -765,3 +774,61 @@ print(z)
 #### Total Sample and Mean of each Sample
 
 ![images](images/79.png)
+
+#### Calculate SD
+
+```py
+import numpy as np
+print(np.std([1,2,3,4])) # 1.11
+print(np.std([1, 1.5, 2, 2.5, 1.5, 2, 2.5, 3, 2, 2.5, 3, 3.5, 2.5, 3, 3.5, 4])) # 0.79
+print(np.mean) # 2.25
+```
+
+![images](images/80.png)
+
+#### SD of Sampling Mean
+
+![images](images/81.png)
+
+#### The Central Limit Theorem
+
+The central limit theorem states that if you have a population with mean μ and standard deviation σ and take
+sufficiently large random samples from the population with replacement , then the distribution of the sample
+means will be approximately normally distributed.
+
+```text
+n >= 30
+```
+
+![images](images/82.png)
+
+#### Roll 1 Die
+
+![images](images/83.png)
+
+#### Roll 2 Die
+
+![images](images/84.png)
+
+#### Find Standard Error
+
+![images](images/85.png)
+
+#### Standard Error for Avg of 5 Dice
+
+![images](images/86.png)
+
+> **Note**: If n increases then shape simple distribution is skinnier and if sample population / size is large then shape of sample distribution is skinnier.
+
+**Shape of Distribution when n is `Increase`**:
+
+![images](images/87.png)
+
+#### M&MS
+
+![images](images/88.png)
+
+#### M&MS CLT
+
+![images](images/89.png)
+![images](images/90.png)
