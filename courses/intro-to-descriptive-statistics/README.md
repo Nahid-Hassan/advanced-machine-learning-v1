@@ -97,6 +97,16 @@ Mathematics for Understanding Data. Statistics is an important field of math tha
       - [Standard Error for Avg of 5 Dice](#standard-error-for-avg-of-5-dice)
       - [M&MS](#mms)
       - [M&MS CLT](#mms-clt)
+      - [Klout Score](#klout-score)
+      - [Klout Parameters](#klout-parameters)
+      - [Klout Sampling Distribution (**Mean**)](#klout-sampling-distribution-mean)
+      - [Klout Sampling Distribution (**SD**)](#klout-sampling-distribution-sd)
+      - [Sampling Distribution Shape](#sampling-distribution-shape)
+      - [Location of Mean of Distribution](#location-of-mean-of-distribution)
+      - [Probability of the Obtaining `Mean`](#probability-of-the-obtaining-mean)
+      - [Increase Sample Size](#increase-sample-size)
+      - [Location of `Mean`](#location-of-mean)
+      - [Probability of Mean](#probability-of-mean)
 
 ### Visualizing Data
 
@@ -832,3 +842,56 @@ n >= 30
 
 ![images](images/89.png)
 ![images](images/90.png)
+
+#### Klout Score
+
+Klout score is a single number that measures your influence across the internet, primarily the social media.
+
+[![Image Alt Text Here](https://img.youtube.com/vi/3q0oPuWxFpA/0.jpg)](https://www.youtube.com/watch?v=3q0oPuWxFpA)
+
+#### Klout Parameters
+
+![images](images/91.png)
+
+#### Klout Sampling Distribution (**Mean**)
+
+[Klout Data - Spreadsheet](https://docs.google.com/spreadsheets/d/11A9tK-aRdukQ5lqTOO_yfQABJIUndmvehByu7JZtor8/edit#gid=0)
+
+![images](images/92.png)
+
+#### Klout Sampling Distribution (**SD**)
+
+![images](images/93.png)
+
+#### Sampling Distribution Shape
+
+![images](images/94.png)
+
+#### Location of Mean of Distribution
+
+![images](images/95.png)
+
+#### Probability of the Obtaining `Mean`
+
+![images](images/96.png)
+
+#### Increase Sample Size
+
+![images](images/97.png)
+
+#### Location of `Mean`
+
+![images](images/98.png)
+
+#### Probability of Mean
+
+![images](images/99.png)
+
+```text
+                              ~~~~~~~~~~~~ Finished ~~~~~~~~~~~~~~~
+```
+
+---
+
+
+**Next**: [Intro to Inferential Statistics](https://www.udacity.com/course/intro-to-inferential-statistics--ud201)
