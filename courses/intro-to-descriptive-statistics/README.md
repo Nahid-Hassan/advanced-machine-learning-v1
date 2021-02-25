@@ -888,10 +888,9 @@ Klout score is a single number that measures your influence across the internet,
 ![images](images/99.png)
 
 ```text
-                              ~~~~~~~~~~~~ Finished ~~~~~~~~~~~~~~~
+                                   ~~~~~~~~~~~~ Finished ~~~~~~~~~~~~~~~
 ```
 
 ---
-
 
 **Next**: [Intro to Inferential Statistics](https://www.udacity.com/course/intro-to-inferential-statistics--ud201)
