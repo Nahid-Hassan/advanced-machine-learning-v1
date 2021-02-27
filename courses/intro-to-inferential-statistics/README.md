@@ -4,6 +4,11 @@
 
 - [Intro to Inferential Statistics](#intro-to-inferential-statistics)
   - [Table of Contents](#table-of-contents)
-    - [Introduction and Lesson 7 Review (Sampling Distribution)](#introduction-and-lesson-7-review-sampling-distribution)
+    - [Estimation](#estimation)
+      - [Sampling Distribution Summary](#sampling-distribution-summary)
 
-### Introduction and Lesson 7 Review (Sampling Distribution)
+### Estimation
+
+#### Sampling Distribution Summary
+
+![images](images/1.png)
