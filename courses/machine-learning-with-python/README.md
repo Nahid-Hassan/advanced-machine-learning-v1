@@ -9,6 +9,10 @@
       - [Introduction to Machine Learning](#introduction-to-machine-learning)
       - [Python for Machine Learning](#python-for-machine-learning)
       - [Supervised vs Unsupervised](#supervised-vs-unsupervised)
+    - [Regression](#regression)
+      - [Simple Linear Regression](#simple-linear-regression)
+      - [Model Evaluation in Regression Models](#model-evaluation-in-regression-models)
+      - [Evaluation Metrics in Regression Models](#evaluation-metrics-in-regression-models)
 
 ### What is Machine Learning
 
@@ -92,3 +96,150 @@ And finally, clustering: Clustering is considered to be one of the most popular 
 ![images](images/19.png)
 
 So, to recap, the biggest difference between supervised and unsupervised learning is that supervised learning deals with labeled data while unsupervised learning deals with unlabeled data. In supervised learning, we have machine learning algorithms for classification and regression. In unsupervised learning, we have methods such as clustering. In comparison to supervised learning, unsupervised learning has fewer models and fewer evaluation methods that can be used to ensure that the outcome of the model is accurate. As such, unsupervised learning creates a less controllable environment as the machine is creating outcomes for us.
+
+### Regression
+
+Hello and welcome! In this video we'll be giving a brief introduction to regression. So let's get started. Look at this data set.
+
+![images](images/20.png)
+
+It's related to co2 emissions from different cars. It includes engine size, number of cylinders, fuel consumption, and co2 emission from various automobile models. The question is: given this data set can we predict the co2 emission of a car using other fields such as engine size or cylinders? Let's assume we have some historical data from different cars and assume that a car such as in row 9 has not been manufactured yet, but we're interested in estimating its approximate co2 emission after production. Is it possible? We can use regression methods to predict a continuous value such as co2 emission using some other variables. Indeed regression is the process of predicting a continuous value. In regression there are two types of variables: a dependent variable and one or more independent variables. The dependent variable can be seen as the state, target, or final goal we study and try to predict. And the independent variables, also known as explanatory variables, can be seen as the causes of those states. The independent variables are shown conventionally by X and the dependent variable is notated by Y. A regression model relates Y or the dependent variable to a function of X i.e. the independent variables. The key point in the regression is that our dependent value should be continuous and cannot be a discrete value. However, the independent variable, or variables, can be measured on either a categorical or continuous measurement scale.
+
+![images](images/21.png)
+
+So, what we want to do here is to use the historical data of some cars using one or more of their features and from that data make a model. We use regression to build such a regression estimation model; then the model is used to predict the expected co2 emission for a new or unknown car.
+
+Basically there are two types of regression models simple regression and multiple regression.
+
+![images](images/22.png)
+
+Simple regression is when one independent variable is used to estimate a dependent variable. It can be either linear or non-linear. For example, predicting co2 emission using the variable of engine size. Linearity of regression is based on the nature of relationship between independent and dependent variables. When more than one independent variable is present the process is called multiple linear regression. For example, predicting co2 emission using engine size and the number of cylinders in any given car. Again, depending on the relation between dependent and independent variables it can be either linear or non-linear regression.
+
+Let's examine some sample applications of regression.
+
+![images](images/23.png)
+
+Essentially we use regression when we want to estimate a continuous value. For instance, one of the applications of regression analysis could be in the area of sales forecasting. You can try to predict a sales person's total yearly sales from independent variables such as age, education, and years of experience. It can also be used in the field of psychology, for example, to determine individual satisfaction, based on demographic and psychological factors. We can use regression analysis to predict the price of a house in an area, based on its size number of bedrooms, and so on. We can even use it to predict employment income for independent variables such as hours of work, education, occupation, sex, age, years of experience, and so on. Indeed, you can find many examples of the usefulness of regression analysis in these and many other fields or domains, such as finance, healthcare, retail, and more.
+
+We have many regression algorithms, each of them has its own importance and a specific condition to which their application is best suited.
+
+![images](images/24.png)
+
+And while we've covered just a few of them in this course, it gives you enough base knowledge for you to explore different regression techniques. Thanks for watching.
+
+#### Simple Linear Regression
+
+Hello and welcome. In this video, we'll be covering 1linear regression1. You don't need to know any linear algebra to understand topics in linear regression. This high-level introduction will give you enough background information on linear regression to be able to use it effectively on your own problems. So let's get started.
+
+![images](images/25.png)
+
+Let's take a look at this data set. It's related to the `Co2 emission` of different cars. It includes `engine size`, `cylinders`, `fuel consumption` and `Co2 emissions` for various car models. The question is, given this data set, can we predict the Co2 emission of a car using another field such as engine size? Quite simply, yes. We can use linear regression to predict a continuous value such as Co2 emission by using other variables. Linear regression is the approximation of a linear model used to describe the **relationship** between two or more variables. In simple linear regression, there are `two variables`, a **dependent** variable and an **independent** variable. The key point in the linear regression is that our dependent value should be **continuous** and cannot be a discrete value. However, the independent variables can be measured on either a categorical or continuous measurement scale.
+
+There are two types of linear regression models.
+
+![images](images/26.png)
+
+They are simple regression and multiple regression. Simple linear regression is when one independent variable is used to estimate a dependent variable. For example, predicting Co2 emission using the engine size variable. When more than one independent variable is present the process is called multiple linear regression, for example, predicting Co2 emission using engine size and cylinders of cars. Our focus in this video is on simple linear regression.
+
+Now let's see how linear regression works. Okay, so let's look at our data set again.
+
+![images](images/27.png)
+
+To understand linear regression, we can plot our variables here. We show engine size as an independent variable and emission as the target value that we would like to predict. A scatter plot clearly shows the relation between variables where changes in one variable explain or possibly cause changes in the other variable. Also, it indicates that these variables are linearly related. With linear regression you can fit a line through the data. For instance, as the engine size increases, so do the emissions. With linear regression you can model the relationship of these variables. A good model can be used to predict what the approximate emission of each car is. How do we use this line for prediction now?
+
+Let us assume for a moment that the line is a good fit of the data. We can use it to predict the emission of an unknown
+car.
+
+![images](images/28.png)
+
+For example, for a sample car with engine size `2.4`, you can find the emission is `214`.
+Now, let's talk about what the fitting line actually is.
+We're going to predict the target value `y`. In our case using the independent variable engine size represented by `x1`. The fit line is shown traditionally as a **polynomial**. In a simple regression problem, a single `x`, the form of the model would be `theta` `0` plus `theta 1` `x1`. In this equation, `y` hat is the dependent variable of the predicted value. And `x1` is the independent variable.
+Theta 0 and theta 1 are the parameters of the line that we must adjust. Theta 1 is known as the slope or gradient of the fitting line and theta 0 is known as the intercept.
+Theta 0 and theta 1 are also called the coefficients of the linear equation.
+You can interpret this equation as y hat being a function of x1, or y hat being dependent of x1. How would you draw a line through the points? And how do you determine which line fits best?
+Linear regression estimates the coefficients of the line. This means we must calculate theta 0 and theta 1 to find the best line to fit the data. This line would best estimate the emission of the unknown data points. Let's see how we can find this line or, to be more precise, how we can adjust the parameters to make the line the best fit for the data.
+
+For a moment, let's assume we've already found the best fit line for our data. Now, let's go through all the points and check how well they align with this line.
+
+![images](images/29.png)
+
+Best fit here means that if we have, for instance, a car with engine size `x1 = 5.4` and actual `Co2 = 250`, its Co2 should be predicted very close to the actual value, which is `y = 250` based on historical data. But if we use the fit line, or better to say using our polynomial with known parameters to predict the Co2 emission, it will return `y hat = 340`. Now if you compare the actual value of the emission of the car with what we've predicted using our model, you will find out that we have a `90 unit error`. This means our prediction line is not accurate. This error is also called the `residual error`. So we can say the error is the distance from the data point to the fitted regression line.
+The mean of all residual errors shows how poorly the line fits with the whole data set. Mathematically it can be shown by the equation Mean Squared Error, shown as **MSE**. Our objective is to find a line where the mean of all these errors is minimized. In other words, the mean error of the prediction using the fit line should be minimized. Let's reword it more technically. The objective of linear regression, is to minimize this MSE equation and to minimize it, we should find the best parameters theta 0 and theta 1. Now the question is how to find theta 0 and theta 1 in such a way that it minimizes this error?
+How can we find such a perfect line? Or said another way, how should we find the best parameters for our line? Should we move the line a lot randomly and calculate the MSE value every time and choose the minimum one?
+
+Not really. Actually, we have two options here. Option one, we can use a mathematic approach, or option two, we can use an optimization approach. Let's see how we could easily use a mathematic formula to find the theta 0 and
+As mentioned before, `theta 0 and theta 1` in the simple linear regression are the **coefficients** of the fit line.
+
+![images](images/30.png)
+
+We can use a simple equation to estimate these coefficients. That is, given that it's a simple linear regression with only two parameters, and knowing that theta 0 and theta 1 are the **intercept** and **slope** of the line, we can estimate them directly from our data. It requires that we calculate the mean of the independent and dependent or target columns from the data set. Notice that all of the data must be available to traverse and calculate the parameters. It can be shown that the intercept and slope can be calculated using these equations.
+We can start off by estimating the value for theta 1. This is how you can find the slope of a line based on the data. X bar is the average value for the engine size in our data set. Please consider that we have nine rows here, rows 0 to 8. First we calculate the average of x1 and of y, then we plug it into the slope equation to find theta 1.
+The xi and yi in the equation refer to the fact that we need to repeat these calculations across all values in our data set. And i refers to the ith value of x or y. Applying all values, we find theta 1 equals 39. It is our second parameter. It is used to calculate the first parameter which is the intercept of the line.
+Now we can plug theta 1 into the line equation to find theta 0. It is easily calculated hat theta 0 equals 125.74. So these are the two parameters for the line, where theta 0 is also called the bias coefficient, and theta 1 is the coefficient for the Co2 emission column.
+
+As a side note, you really don't need to remember the formula for calculating these parameters, as most of the libraries used for machine learning in Python, R and Scala can easily find these parameters for you. But it's always good to understand how it works. Now, we can write down the polynomial of the line.
+
+So we know how to find the best fit for our data and its equation. Now the question is how can we use it to predict the emission of a new car based on its engine size?
+
+![images](images/31.png)
+
+After we found the parameters of the linear equation, making predictions is as simple as solving the equation for a specific set of inputs.
+Imagine we are predicting Co2 emission, or y, from engine size, or x for the automobile in record number 9. Our linear regression model representation for this problem would be y hat= theta 0 + theta 1 x1. Or if we map it to our data set, it would be Co2Emission =theta 0 + theta 1 EngineSize.
+As we saw, we can find theta 0, theta 1 using the equations that we just talked about. Once found, we can plug in the equation of the linear model. For example, let's use theta 0 = 125 and theta 1 = 39. So we can rewrite the linear model as Co2Emission equals 125 plus 39 EngineSize. Now let's plug in the 9th row of our data set and calculate the Co2 emission for a car with an engine size of 2.4. So `Co2Emission = 125 + 39 x 2.4.` Therefore, we can predict that the Co2Emission for this specific car would be 218.6.
+
+Let's talk a bit about why linear regression is so useful.
+
+![images](images/32.png)
+
+Quite simply, it is the most basic regression to use and understand. In fact, one reason why linear regression is so useful is that it's **fast**. It also doesn't require **tuning** of **parameters**. So something like tuning the K parameter and K nearest neighbors, or the learning rate in neural networks isn't something to worry about. Linear regression is also easy to understand, and highly **interpretable**.
+
+#### Model Evaluation in Regression Models
+
+Hello and welcome. In this video, we'll be covering model evaluation. So let's get started.
+The goal of regression is to build a model to accurately predict an unknown case. To this end, we have to perform regression evaluation after building the model. In this video, we'll introduce and discuss two types of evaluation approaches that can be used to achieve this goal.
+
+![images](images/33.png)
+
+These approaches are train and test on the same dataset and train/test split. We'll talk about what each of these are, as well as the pros and cons of using each of these models. Also, we'll introduce some metrics for accuracy of regression models. Let's look at the first approach.
+
+![images](images/34.png)
+
+When considering evaluation models, we clearly want to choose the one that will give us the most accurate results. So, the question is, how can we calculate the accuracy of our model? In other words, how much can we trust this model for prediction of an unknown sample using a given dataset and having built a model such as linear regression? One of the solutions is to select a portion of our dataset for testing. For instance, assume that we have 10 records in our dataset. We use the entire dataset for training, and we build a model using this training set. Now, we select a small portion of the dataset, such as row number six to nine, but without the labels. This set is called a test set, which has the labels, but the labels are not used for prediction and is used only as ground truth. The labels are called actual values of the test set. Now we pass the feature set of the testing portion to our built model and predict the target values. Finally, we compare the predicted values by our model with the actual values in the test set. This indicates how accurate our model actually is. There are different metrics to report the accuracy of the model, but most of them work generally based on the similarity of the predicted and actual values.
+
+Let's look at one of the simplest metrics to calculate the accuracy of our regression model.
+
+![images](images/35.png)
+
+As mentioned, we just compare the actual values y with the predicted values, which is noted as y hat for the testing set. The error of the model is calculated as the average difference between the predicted and actual values for all the rows. We can write this error as an equation.
+
+![images](images/36.png)
+
+So, the first evaluation approach we just talked about is the simplest one, train and test on the same dataset. Essentially, the name of this approach says it all. You train the model on the entire dataset, then you test it using a portion of the same dataset. In a general sense, when you test with a dataset in which you know the target value for each data point, you're able to obtain a percentage of accurate predictions for the model. This evaluation approach would most likely have a high training accuracy and the low out-of-sample accuracy since the model knows all of the testing data points from the training.
+
+What is training accuracy and out-of-sample accuracy?
+
+![images](images/37.png)
+
+We said that training and testing on the same dataset produces a high training accuracy, but what exactly is training accuracy? Training accuracy is the percentage of correct predictions that the model makes when using the test dataset. However, a high training accuracy isn't necessarily a good thing. For instance, having a high training accuracy may result in an over-fit the data. This means that the model is overly trained to the dataset, which may capture noise and produce a non-generalized model. Out-of-sample accuracy is the percentage of correct predictions that the model makes on data that the model has not been trained on. Doing a train and test on the same dataset will most likely have low out-of-sample accuracy due to the likelihood of being over-fit. It's important that our models have high out-of-sample accuracy because the purpose of our model is, of course, to make correct predictions on unknown data. So, how can we improve out-of-sample accuracy?
+
+One way is to use another evaluation approach called train/test split.
+
+![images](images/38.png)
+![images](images/out-of-range.png)
+
+In this approach, we select a portion of our dataset for training, for example, row zero to five, and the rest is used for testing, for example, row six to nine. The model is built on the training set. Then, the test feature set is passed to the model for prediction. Finally, the predicted values for the test set are compared with the actual values of the testing set. The second evaluation approach is called train/test split. Train/test split involves splitting the dataset into training and testing sets respectively, which are mutually exclusive. After which, you train with the training set and test with the testing set. This will provide a more accurate evaluation on out-of-sample accuracy because the testing dataset is not part of the dataset that has been used to train the data. It is more realistic for real-world problems. This means that we know the outcome of each data point in the dataset, making it great to test with. Since this data has not been used to train the model, the model has no knowledge of the outcome of these data points. So, in essence, it's truly out-of-sample testing. However, please ensure that you train your model with the testing set afterwards, as you don't want to lose potentially valuable data. The issue with train/test split is that it's highly dependent on the datasets on which the data was trained and tested. The variation of this causes train/test split to have a better out-of-sample prediction than training and testing on the same dataset, but it still has some problems due to this dependency.
+
+![images](images/39.png)
+
+Another evaluation model, called K-fold cross-validation, resolves most of these issues. How do you fix a high variation that results from a dependency? Well, you average it. Let me explain the basic concept of K-fold cross-validation to see how we can solve this problem. The entire dataset is represented by the points in the image at the top left. If we have K equals four folds, then we split up this dataset as shown here. In the first fold for example, we use the first 25 percent of the dataset for testing and the rest for training. The model is built using the training set and is evaluated using the test set. Then, in the next round or in the second fold, the second 25 percent of the dataset is used for testing and the rest for training the model. Again, the accuracy of the model is calculated. We continue for all folds. Finally, the result of all four evaluations are averaged. That is, the accuracy of each fold is then averaged, keeping in mind that each fold is distinct, where no training data in one fold is used in another. K-fold cross-validation in its simplest form performs multiple train/test splits, using the same dataset where each split is different. Then, the result is average to produce a more consistent out-of-sample accuracy. We wanted to show you an evaluation model that addressed some of the issues we've described in the previous approaches. However, going in-depth with K-fold cross-validation model is out of the scope for this course.
+
+#### Evaluation Metrics in Regression Models
+
+Hello, and welcome! In this video, we’ll be covering evaluation metrics for classifiers. So let’s get started. Evaluation metrics explain the performance of a model. Let’s talk more about the model evaluation metrics that are used for classification.
+
+![images](images/40.png)
+
+![images](images/41.png)
+
+**Note**: `RMSE` and `R^2` is most Used.
