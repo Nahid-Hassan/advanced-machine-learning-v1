@@ -13,6 +13,15 @@
       - [Simple Linear Regression](#simple-linear-regression)
       - [Model Evaluation in Regression Models](#model-evaluation-in-regression-models)
       - [Evaluation Metrics in Regression Models](#evaluation-metrics-in-regression-models)
+      - [Simple Linear Regression Code](#simple-linear-regression-code)
+      - [Multiple Linear Regression](#multiple-linear-regression)
+      - [Code Multiple Linear Regression](#code-multiple-linear-regression)
+      - [Non-Linear Regression](#non-linear-regression)
+    - [Classification](#classification)
+      - [What is Classification](#what-is-classification)
+      - [K-Nearest Neighbours](#k-nearest-neighbours)
+  - [> Also see in the lecture-videos folder: k-nearest neighbors.mp4](#-also-see-in-the-lecture-videos-folder-k-nearest-neighborsmp4)
+      - [Evaluation Metrics in Classification](#evaluation-metrics-in-classification)
 
 ### What is Machine Learning
 
@@ -243,3 +252,323 @@ Hello, and welcome! In this video, we’ll be covering evaluation metrics for cl
 ![images](images/41.png)
 
 **Note**: `RMSE` and `R^2` is most Used.
+
+#### Simple Linear Regression Code
+
+```py
+from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+# Read FuelConsumption.csv
+df = pd.read_csv('./../code-colab/datasets/FuelConsumption.csv')
+
+# Remove/Drop Nan cell/row
+df.dropna(inplace=True)
+
+# describe the dataset
+print(df.describe())
+
+# create new dataframe for more explorer
+cdf = df[['ENGINESIZE', 'CYLINDERS', 'FUELCONSUMPTION_COMB', 'CO2EMISSIONS']]
+
+# visualize dataset
+plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS)
+plt.xlabel("Engine Size")
+plt.ylabel('CO2 Emissions')
+plt.show()
+
+# Split dataset
+mask = np.random.rand(len(cdf)) < .8
+
+train = cdf[mask]
+test = cdf[~mask]
+
+# create model using sklearn.linear_model
+from sklearn import linear_model
+regr = linear_model.LinearRegression()
+
+train_x = np.asanyarray(cdf[['ENGINESIZE']])
+train_y = np.asanyarray(cdf[['CO2EMISSIONS']])
+
+regr.fit(train_x, train_y)
+print(regr.coef_)
+print(regr.intercept_)
+
+# Draw regression line
+plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS)
+# -g for green line
+plt.plot(train_x, regr.coef_[0][0] * train_x + regr.intercept_[0], '-g')
+plt.xlabel("Engine Size")
+plt.ylabel('CO2 Emissions')
+plt.show()
+
+# evaluate
+test_x = np.asanyarray(test[['ENGINESIZE']])
+test_y = np.asanyarray(test[['CO2EMISSIONS']])
+test_y_ = regr.predict(test_x)
+
+# less is better
+print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
+
+# high is better, maximum: 1.0
+print("R2-score: %.2f" % r2_score(test_y, test_y_) )
+```
+
+#### Multiple Linear Regression
+
+In this video, we'll be covering multiple linear regression. As you know, there are two types of linear regression models, simple regression and multiple regression.
+
+![images](images/44.png)
+
+Simple linear regression is when one independent variable is used to estimate a dependent variable. For example, predicting CO_2 emission using the variable of engine size. In reality, there are multiple variables that predict the CO_2 emission. When multiple independent variables are present, the process is called multiple linear regression. For example, predicting CO_2 emission using engine size and the number of cylinders in the car's engine. Our focus in this video is on multiple linear regression. The good thing is that multiple linear regression is the extension of the simple linear regression model. So, I suggest you go through the simple linear regression video first if you haven't watched it already.
+
+Before we dive into a sample dataset and see how multiple linear regression works, I want to tell you what kind of problems it can solve, when we should use it, and specifically, what kind of questions we can answer using it.
+
+![images](images/45.png)
+
+Basically, there are two applications for multiple linear regression. First, it can be used when we would like to identify the strength of the effect that the independent variables have on the dependent variable. For example, does revision time, test anxiety, lecture attendance and gender have any effect on exam performance of students? Second, it can be used to predict the impact of changes, that is, to understand how the dependent variable changes when we change the independent variables. For example, if we were reviewing a person's health data, a multiple linear regression can tell you how much that person's blood pressure goes up or down for every unit increase or decrease in a patient's body mass index holding other factors constant.
+
+As is the case with simple linear regression, multiple linear regression is a method of predicting a continuous variable. It uses multiple variables called independent variables or predictors that best predict the value of the target variable which is also called the dependent variable.
+
+![images](images/46.png)
+
+In multiple linear regression, the target value Y, is a linear combination of independent variables X. For example, you can predict how much CO_2 a car might admit due to independent variables such as the car's engine size, number of cylinders, and fuel consumption. Multiple linear regression is very useful because you can examine which variables are significant predictors of the outcome variable. Also, you can find out how each feature impacts the outcome variable. Again, as is the case in simple linear regression, if you manage to build such a regression model, you can use it to predict the emission amount of an unknown case such as record number nine. Generally, the model is of the form y hat equals theta zero, plus theta one x_1, plus theta two x_2 and so on, up to theta n x_n. Mathematically, we can show it as a vector form as well. This means it can be shown as a dot product of two vectors; the parameters vector and the feature set vector. Generally, we can show the equation for a multidimensional space as theta transpose x, where theta is an n by one vector of unknown parameters in a multi-dimensional space, and x is the vector of the featured sets, as theta is a vector of coefficients and is supposed to be multiplied by x. Conventionally, it is shown as transpose theta. Theta is also called the parameters or weight vector of the regression equation. Both these terms can be used interchangeably, and x is the feature set which represents a car. For example, x_1 for engine size or x_2 for cylinders, and so on. The first element of the feature set would be set to one, because it turns that theta zero into the intercept or biased parameter when the vector is multiplied by the parameter vector. Please notice that theta transpose x in a one-dimensional space is the equation of a line, it is what we use in simple linear regression. In higher dimensions when we have more than one input or x the line is called a plane or a hyperplane, and this is what we use for multiple linear regression. So, the whole idea is to find the best fit hyperplane for our data. To this end and as is the case in linear regression, we should estimate the values for theta vector that best predict the value of the target field in each row. To achieve this goal, we have to minimize the error of the prediction.
+
+Now, the question is, how do we find the optimized parameters?
+
+![images](images/47.png)
+
+To find the optimized parameters for our model, we should first understand what the optimized parameters are, then we will find a way to optimize the parameters. In short, optimized parameters are the ones which lead to a model with the fewest errors. Let's assume for a moment that we have already found the parameter vector of our model, it means we already know the values of theta vector. Now we can use the model and the feature set of the first row of our dataset to predict the CO_2 emission for the first car, correct? If we plug the feature set values into the model equation, we find y hat. Let's say for example, it returns 140 as the predicted value for this specific row, what is the actual value? Y equals 196. How different is the predicted value from the actual value of 196? Well, we can calculate it quite simply as 196 subtract 140, which of course equals 56. This is the error of our model only for one row or one car in our case. As is the case in linear regression, we can say the error here is the distance from the data point to the fitted regression model. The mean of all residual errors shows how bad the model is representing the data set, it is called the mean squared error, or MSE. Mathematically, MSE can be shown by an equation. While this is not the only way to expose the error of a multiple linear regression model, it is one of the most popular ways to do so. The best model for our data set is the one with minimum error for all prediction values. So, the objective of multiple linear regression is to minimize the MSE equation. To minimize it, we should find the best parameters theta, but how?
+
+Okay, how do we find the parameter or coefficients for multiple linear regression?
+
+![images](images/48.png)
+
+There are many ways to estimate the value of these coefficients. However, the most common methods are the ordinary least squares and optimization approach. Ordinary least squares tries to estimate the values of the coefficients by minimizing the mean square error. This approach uses the data as a matrix and uses linear algebra operations to estimate the optimal values for the theta. The problem with this technique is the time complexity of calculating matrix operations as it can take a very long time to finish. When the number of rows in your data set is less than 10,000, you can think of this technique as an option. However, for greater values, you should try other faster approaches. The second option is to use an optimization algorithm to find the best parameters. That is, you can use a process of optimizing the values of the coefficients by iteratively minimizing the error of the model on your training data. For example, you can use gradient descent which starts optimization with random values for each coefficient, then calculates the errors and tries to minimize it through y's changing of the coefficients in multiple iterations. Gradient descent is a proper approach if you have a large data set. Please understand however, that there are other approaches to estimate the parameters of the multiple linear regression that you can explore on your own.
+
+After you find the best parameters for your model, you can go to the prediction phase. After we found the parameters of the linear equation, making predictions is as simple as solving the equation for a specific set of inputs.
+
+![images](images/49.png)
+
+Imagine we are predicting CO_2 emission or Y from other variables for the automobile in record number nine. Our linear regression model representation for this problem would be y hat equals theta transpose x. Once we find the parameters, we can plug them into the equation of the linear model. For example, let's use theta zero equals 125, theta one equals 6.2, theta two equals 14, and so on. If we map it to our data set, we can rewrite the linear model as CO_2 emissions equals 125 plus 6.2 multiplied by engine size, plus 14 multiplied by cylinder, and so on. As you can see, multiple linear regression estimates the relative importance of predictors. For example, it shows cylinder has higher impact on CO_2 emission amounts in comparison with engine size. Now, let's plug in the ninth row of our data set and calculate the CO_2 emission for a car with the engine size of 2.4. So, CO_2 emission equals 125 plus 6.2 times 2.4, plus 14 times four, and so on. We can predict the CO_2 emission for this specific car would be 214.1.
+
+Now, let me address some concerns that you might already be having regarding multiple linear regression.
+
+![images](images/50.png)
+
+As you saw, you can use multiple independent variables to predict a target value in multiple linear regression. It sometimes results in a better model compared to using a simple linear regression which uses only one independent variable to predict the dependent variable. Now the question is how, many independent variable should we use for the prediction? Should we use all the fields in our data set? Does adding independent variables to a multiple linear regression model always increase the accuracy of the model? Basically, adding too many independent variables without any theoretical justification may result in an overfit model. An overfit model is a real problem because it is too complicated for your data set and not general enough to be used for prediction. So, it is recommended to avoid using many variables for prediction. There are different ways to avoid overfitting a model in regression, however that is outside the scope of this video. The next question is, should independent variables be continuous? Basically, categorical independent variables can be incorporated into a regression model by converting them into numerical variables. For example, given a binary variables such as car type, the code dummy zero for manual and one for automatic cars. As a last point, remember that multiple linear regression is a specific type of linear regression. So, there needs to be a linear relationship between the dependent variable and each of your independent variables. There are a number of ways to check for linear relationship. For example, you can use scatter plots and then visually checked for linearity. If the relationship displayed in your scatter plot is not linear, then you need to use non-linear regression.
+
+#### Code Multiple Linear Regression
+
+```py
+regr = linear_model.LinearRegression()
+x = np.asanyarray(train[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+y = np.asanyarray(train[['CO2EMISSIONS']])
+regr.fit (x, y)
+print ('Coefficients: ', regr.coef_)
+y_= regr.predict(test[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+x = np.asanyarray(test[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+y = np.asanyarray(test[['CO2EMISSIONS']])
+print("Residual sum of squares: %.2f"% np.mean((y_ - y) ** 2))
+print('Variance score: %.2f' % regr.score(x, y))
+```
+
+#### Non-Linear Regression
+
+Hello and welcome. In this video, we'll be covering non-linear regression basics. So, let's get started.
+
+![images](images/51.png)
+
+These data points correspond to China's gross domestic product or GDP from 1960-2014. The first column is the years and the second is China's corresponding annual gross domestic income in US dollars for that year. This is what the data points look like. Now, we have a couple of interesting questions. First, can GDP be predicted based on time? Second, can we use a simple linear regression to model it? Indeed. If the data shows a curvy trend, then linear regression would not produce very accurate results when compared to a non-linear regression. Simply because, as the name implies, linear regression presumes that the data is linear. The scatter plot shows that there seems to be a strong relationship between GDP and time, but the relationship is not linear. As you can see, the growth starts off slowly, then from 2005 onward, the growth is very significant. Finally, it decelerates slightly in the 2010s. It looks like either a logistical or exponential function. So, it requires a special estimation method of the non-linear regression procedure. For example, if we assume that the model for these data points are exponential functions, such as Y hat equals Theta zero plus Theta one Theta two transpose X or to the power of X, our job is to estimate the parameters of the model, i.e., Thetas, and use the fitted model to predict GDP for unknown or future cases.
+
+In fact, many different regressions exists that can be used to fit whatever the dataset looks like.
+
+![images](images/52.png)
+
+You can see a quadratic and cubic regression lines here, and it can go on and on to infinite degrees. In essence, we can call all of these polynomial regression, where the relationship between the independent variable X and the dependent variable Y is modeled as an Nth degree polynomial in X. With many types of regression to choose from, there's a good chance that one will fit your dataset well. Remember, it's important to pick a regression that fits the data the best.
+
+**So, what is polynomial regression?**:
+
+![images](images/53.png)
+
+Polynomial regression fits a curve line to your data. A simple example of polynomial with degree three is shown as Y hat equals Theta zero plus Theta 1_X plus Theta 2_X squared plus Theta 3_X cubed or to the power of three, where Thetas are parameters to be estimated that makes the model fit perfectly to the underlying data. Though the relationship between X and Y is non-linear here and polynomial regression can't fit them, a polynomial regression model can still be expressed as linear regression. I know it's a bit confusing, but let's look at an example. Given the third degree polynomial equation, by defining X_1 equals X and X_2 equals X squared or X to the power of two and so on, the model is converted to a simple linear regression with new variables as Y hat equals Theta zero plus Theta one X_1 plus Theta two X_2 plus Theta three X_3. This model is linear in the parameters to be estimated, right? Therefore, this polynomial regression is considered to be a special case of traditional multiple linear regression. So, you can use the same mechanism as linear regression to solve such a problem. Therefore, polynomial regression models can fit using the model of least squares. Least squares is a method for estimating the unknown parameters in a linear regression model by minimizing the sum of the squares of the differences between the observed dependent variable in the given dataset and those predicted by the linear function.
+
+**So, what is non-linear regression exactly?**:
+
+![images](images/54.png)
+
+First, non-linear regression is a method to model a non-linear relationship between the dependent variable and a set of independent variables. Second, for a model to be considered non-linear, Y hat must be a non-linear function of the parameters Theta, not necessarily the features X. When it comes to non-linear equation, it can be the shape of exponential, logarithmic, and logistic, or many other types. As you can see in all of these equations, the change of Y hat depends on changes in the parameters Theta, not necessarily on X only. That is, in non-linear regression, a model is non-linear by parameters. In contrast to linear regression, we cannot use the ordinary least squares method to fit the data in non-linear regression. In general, estimation of the parameters is not easy.
+
+Let me answer two important questions here.
+
+![images](images/55.png)
+
+First, how can I know if a problem is linear or non-linear in an easy way? To answer this question, we have to do two things. The first is to visually figure out if the relation is linear or non-linear. It's best to plot bivariate plots of output variables with each input variable. Also, you can calculate the correlation coefficient between independent and dependent variables, and if, for all variables, it is 0.7 or higher, there is a linear tendency and thus, it's not appropriate to fit a non-linear regression. The second thing we have to do is to use non-linear regression instead of linear regression when we cannot accurately model the relationship with linear parameters. The second important question is, how should I model my data if it displays non-linear on a scatter plot? Well, to address this, you have to use either a polynomial regression, use a non-linear regression model, or transform your data, which is not in scope for this course.
+
+**Code for Polynomial Regression**:
+
+```py
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn import linear_model
+from sklearn.metrics import r2_score
+
+poly3 = PolynomialFeatures(degree=2)
+train_x_poly3 = poly3.fit_transform(train_x)
+clf3 = linear_model.LinearRegression()
+train_y3_ = clf3.fit(train_x_poly3, train_y)
+
+# The coefficients
+print ('Coefficients: ', clf3.coef_)
+print ('Intercept: ',clf3.intercept_)
+plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS,  color='blue')
+XX = np.arange(0.0, 10.0, 0.1)
+yy = clf3.intercept_[0]+ clf3.coef_[0][1]*XX + clf3.coef_[0][2]*np.power(XX, 2) + clf3.coef_[0][3]*np.power(XX, 3)
+plt.plot(XX, yy, '-r' )
+plt.xlabel("Engine size")
+plt.ylabel("Emission")
+test_x_poly3 = poly3.fit_transform(test_x)
+test_y3_ = clf3.predict(test_x_poly3)
+print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y3_ - test_y)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((test_y3_ - test_y) ** 2))
+print("R2-score: %.2f" % r2_score(test_y,test_y3_ ) )
+```
+
+**Code for Non-Linear Regression**:
+
+```py
+# later added
+```
+
+### Classification
+
+#### What is Classification
+
+- A supervised learning process.
+- Categorized som  unknown items into a discrete set of categories of classes.
+- The target attribute is a categorical variable.
+
+Hello, in this video, we'll give you an introduction to classification. So let's get started. In machine learning classification is a supervised learning approach which can be thought of as a means of categorizing or classifying some unknown items into a discrete set of classes. Classification attempts to learn the relationship between a set of feature variables and a target variable of interest. The target attribute in classification is a categorical variable with discrete values.
+
+So, how does classification and classifiers work?
+
+![images](images/56.png)
+
+Given a set of training data points along with the target labels, classification determines the class label for an unlabeled test case. Let's explain this with an example. A good sample of classification is the loan default prediction. Suppose a bank is concerned about the potential for loans not to be repaid? If previous loan default data can be used to predict which customers are likely to have problems repaying loans, these bad risk customers can either have their loan application declined or offered alternative products. The goal of a loan default predictor is to use existing loan default data which has information about the customers such as age, income, education et cetera, to build a classifier, pass a new customer or potential future default to the model, and then label it, i.e the data points as defaulter or not defaulter. Or for example zero or one. This is how a classifier predicts an unlabeled test case. Please notice that this specific example was about a binary classifier with two values. We can also build classifier models for both binary classification and multi-class classification.
+
+For example, imagine that you've collected data about a set of patients,
+
+![images](images/multi-class-classification.png)
+
+all of whom suffered from the same illness. During their course of treatment, each patient responded to one of three medications. You can use this labeled dataset with a classification algorithm to build a classification model. Then you can use it to find out which drug might be appropriate for a future patient with the same illness. As you can see, it is a sample of multi-class classification.
+
+Classification has different business use cases as well.
+
+![images](images/57.png)
+
+For example, to predict the category to which a customer belongs, for churn detection where we predict whether a customer switches to another provider or brand, or to predict whether or not a customer responds to a particular advertising campaign.
+
+![images](images/58.png)
+
+Data classification has several applications in a wide variety of industries. Essentially, many problems can be expressed as associations between feature and target variables, especially when labelled data is available. This provides a broad range of applicability for classification. For example, classification can be used for email filtering, speech recognition, handwriting recognition, biometric identification, document classification and much more.
+
+Here we have the types of classification algorithms and machine learning.
+
+![images](images/59.png)
+
+They include decision trees, naive bayes, linear discriminant analysis, k-nearest neighbor, logistic regression, neural networks, and support vector machines. There are many types of classification algorithms. We will only cover a few in this course.
+
+#### K-Nearest Neighbours
+
+---
+> Also see in the lecture-videos folder: k-nearest neighbors.mp4
+---
+
+![images](images/60.png)
+
+![images](images/61.png)
+
+![images](images/62.png)
+
+![images](images/63.png)
+
+![images](images/64.png)
+
+![images](images/65.png)
+
+![images](images/66.png)
+
+![images](images/67.png)
+
+![images](images/68.png)
+
+#### Evaluation Metrics in Classification
+
+Hello, and welcome! In this video, we’ll be covering evaluation metrics for classifiers. So let’s get started. Evaluation metrics explain the performance of a model.
+
+![images](images/69.png)
+
+Let’s talk more about the model evaluation metrics that are used for classification. Imagine that we have an historical dataset which shows the customer churn for a telecommunication company. We have trained the model, and now we want to calculate its accuracy using the test set. We pass the test set to our model, and we find the predicted labels. Now the question is, “How accurate is this model?” Basically, we compare the actual values in the test set with the values predicted by the model, to calculate the accuracy of the model. Evaluation metrics provide a key role in the development of a model, as they provide insight to areas that might require improvement. There are different model evaluation metrics but we just talk about three of them here, specifically: `Jaccard index`, `F1-score`, and `Log Loss`.
+
+Let’s first look at one of the simplest accuracy measurements, the Jaccard index -- also known as the Jaccard similarity coefficient.
+
+![images](images/70.png)
+
+Let’s say y shows the true labels of the churn dataset. And y ̂ shows the predicted values by our classifier. Then we can define Jaccard as the size of the intersection divided by the size of the union of two label sets. For example, for a test set of size 10, with 8 correct predictions, or 8 intersections, the accuracy by the Jaccard index would be 0.66. If the entire set of predicted labels for a sample strictly matches with the true set of labels, then the subset accuracy is 1.0; otherwise it is 0.0.
+
+![images](images/71.png)
+
+Another way of looking at accuracy of classifiers is to look at a confusion matrix. For example, let’s assume that our test set has only 40 rows. This matrix shows the corrected and wrong predictions, in comparison with the actual labels. Each confusion matrix row shows the Actual/True labels in the test set, and the columns show the predicted labels by classifier. let's Look at the first row. The first row is for customers whose actual churn value in the test set is 1. As you can calculate, out of 40 customers, the churn value of 15 of them is 1. And out of these 15, the classifier correctly predicted 6 of them as 1, and 9 of them as 0.
+This means that for 6 customers, the actual churn value was 1, in the test set, and the classifier also correctly predicted those as 1. However, while the actual label of 9 customers was 1, the classifier predicted those as 0, which is not very good. We can consider this as an error of the model for the first row. What about the customers with a churn value 0? Let’s look at the second row. It looks like there were 25 customers whose churn value was 0. The classifier correctly predicted 24 of them as 0, and one of them wrongly predicted as 1.
+So, it has done a good job in predicting the customers with a churn value of 0. A good thing about the confusion matrix is that it shows the model’s ability to correctly predict or separate the classes. In the specific case of a binary classifier, such as this example, we can interpret these numbers as the count of true positives, false negatives, true negatives, and false positives. Based on the count of each section, we can calculate the precision and recall of each label. Precision is a measure of the accuracy, provided that a class label has been predicted. It is defined by: precision = True Positive / (True Positive + False Positive). And Recall is the true positive rate. It is defined as: Recall = True Positive / (True Positive + False Negative). So, we can calculate the precision and recall of each class. Now we’re in the position to calculate the F1 scores for each label, based on the precision and recall of that label. The F1 score is the harmonic average of the precision and recall, where an F1 score reaches its best value at 1 (which represents perfect precision and recall) and its worst at 0. It is a good way to show that a classifier has a good value for both recall and precision. It is defined using the F1-score equation. For example, the F1-score for class 0 (i.e. churn=0), is 0.83, and the F1-score for class 1 (i.e. churn=1), is 0.55. And finally, we can tell the average accuracy for this classifier is the average of the F1-score for both labels, which is 0.72 in our case.
+
+> Please notice that both Jaccard and F1-score can be used for multi-class classifiers as well, which is out of scope for this course.
+
+Now let's look at another accuracy metric for classifiers. Sometimes, the output of a classifier is the probability of a class label, instead of the label.
+
+![images](images/72.png)
+
+For example, in logistic regression, the output can be the probability of customer churn, i.e., yes (or equals to 1). This probability is a value between 0 and 1. Logarithmic loss (also known as Log loss) measures the performance of a classifier where the predicted output is a probability value between 0 and 1. So, for example, predicting a probability of 0.13 when the actual label is 1, would be bad and would result in a high log loss. We can calculate the log loss for each row using the log loss equation, which measures how far each prediction is, from the actual label. Then, we calculate the average log loss across all rows of the test set. It is obvious that ideal classifiers have progressively smaller values of log loss. So, the classifier with lower log loss has better accuracy.
+
+**Simple Demo**:
+
+```py
+k = 4
+neigh = KNeighborsClassifier(n_neighbors = k).fit(X_train,y_train)
+```
+
+**Find Best K**:
+
+```py
+# continuously checking k = 1 to 10
+Ks = 10
+mean_acc = np.zeros((Ks-1))
+std_acc = np.zeros((Ks-1))
+
+for n in range(1,Ks):
+
+    #Train Model and Predict
+    neigh = KNeighborsClassifier(n_neighbors = n).fit(X_train,y_train)
+    yhat=neigh.predict(X_test)
+    mean_acc[n-1] = metrics.accuracy_score(y_test, yhat)
+
+
+    std_acc[n-1]=np.std(yhat==y_test)/np.sqrt(yhat.shape[0])
+
+print(mean_acc)
+
+# plot
+plt.plot(range(1,Ks),mean_acc,'g')
+plt.fill_between(range(1,Ks),mean_acc - 1 * std_acc,mean_acc + 1 * std_acc, alpha=0.10)
+plt.fill_between(range(1,Ks),mean_acc - 3 * std_acc,mean_acc + 3 * std_acc, alpha=0.10,color="green")
+plt.legend(('Accuracy ', '+/- 1xstd','+/- 3xstd'))
+plt.ylabel('Accuracy ')
+plt.xlabel('Number of Neighbors (K)')
+plt.tight_layout()
+plt.show()
+
+# print best k
+print( "The best accuracy was with", mean_acc.max(), "with k=", mean_acc.argmax()+1)
+```
