@@ -20,7 +20,6 @@
     - [Classification](#classification)
       - [What is Classification](#what-is-classification)
       - [K-Nearest Neighbours](#k-nearest-neighbours)
-  - [> Also see in the lecture-videos folder: k-nearest neighbors.mp4](#-also-see-in-the-lecture-videos-folder-k-nearest-neighborsmp4)
       - [Evaluation Metrics in Classification](#evaluation-metrics-in-classification)
 
 ### What is Machine Learning
@@ -482,9 +481,7 @@ They include decision trees, naive bayes, linear discriminant analysis, k-neares
 
 #### K-Nearest Neighbours
 
----
 > Also see in the lecture-videos folder: k-nearest neighbors.mp4
----
 
 ![images](images/60.png)
 
@@ -537,6 +534,7 @@ For example, in logistic regression, the output can be the probability of custom
 ```py
 k = 4
 neigh = KNeighborsClassifier(n_neighbors = k).fit(X_train,y_train)
+yhat = neigh.predict(y_test)
 ```
 
 **Find Best K**:
