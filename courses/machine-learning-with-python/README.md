@@ -607,10 +607,14 @@ Decision trees are built by splitting the training set into distinct nodes, wher
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import
 
+# two criterion: [gini(default), entropy]
 drugTree = DecisionTreeClassifier(criterion="entropy", max_depth = 4)
+# Before fit must labelencode your train_data
 drugTree.fit(X_trainset,y_trainset)
+# predict
 predTree = drugTree.predict(X_testset)
 
 from sklearn import metrics
+# measure accuracy 
 print("DecisionTrees's Accuracy: ", metrics.accuracy_score(y_testset, predTree))
 ```
