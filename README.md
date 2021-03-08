@@ -23,3 +23,7 @@ This repository contains all about I learn my `ML` journey.
 1. [Linear Regression](colab-link)
 
 ### Roadmap
+
+<mark>Definitely try this course</mark>
+
+[CertNexus Certified Artificial Intelligence Practitioner Professional Certificate](https://www.coursera.org/professional-certificates/certified-artificial-intelligence-practitioner)
