@@ -25,6 +25,10 @@
       - [Building Decision Tree](#building-decision-tree)
       - [Logistic Regression](#logistic-regression)
       - [Support Vector Machine](#support-vector-machine)
+    - [Clustering](#clustering)
+      - [Introduction to Clustering](#introduction-to-clustering)
+      - [Intro to k-Means](#intro-to-k-means)
+      - [More on K-Means](#more-on-k-means)
 
 ### What is Machine Learning
 
@@ -663,3 +667,115 @@ And now our final question is, in which situation should I use SVM?
 ![images](images/86.png)
 
 Well, SVM is good for image analysis tasks, such as image classification and hand written digit recognition. Also, SVM is very effective in text mining tasks, particularly due to its effectiveness in dealing with high-dimensional data. For example, it is used for detecting spam, text category assignment and sentiment analysis. Another application of SVM is in gene expression data classification, again, because of its power in high-dimensional data classification. SVM can also be used for other types of machine learning problems, such as regression, outlier detection and clustering. I'll leave it to you to explore more about these particular problems.
+
+### Clustering
+
+#### Introduction to Clustering
+
+Hello and welcome. In this video we'll give you a high level introduction to clustering, its applications, and different types of clustering algorithms. Let's get started! Imagine that you have a customer dataset and you need to apply customer segmentation on this historical data.
+
+![images](images/87.png)
+
+Customer segmentation is the practice of partitioning a customer base into groups of individuals that have similar characteristics. It is a significant strategy, as it allows the business to target specific groups of customers, so as to more effectively allocate marketing resources. For example, one group might contain customers who are high profit and low risk. That is, more likely to purchase products or subscribe for a service. Knowing this information allows a business to devote more time and attention to retaining these customers. Another group might include customers from nonprofit organizations and so on. A general segmentation process is not usually feasible for large volumes of varied data, therefore you need an analytical approach to deriving segments and groups from large datasets. Customers can be grouped based on several factors, including age, gender, interests, spending habits and so on. The important requirement is to use the available data to understand and identify how customers are similar to each other. Let's learn how to divide a set of customers into categories, based on characteristics they share. One of the most adopted approaches that can be used for customer segmentation is clustering. Clustering can group data only unsupervised, based on the similarity of customers to each other. It will partition your customers into mutually exclusive groups. For example, into three clusters. The customers in each cluster are similar to each other demographically. Now we can create a profile for each group, considering the common characteristics of each cluster. For example, the first group made up of affluent and middle aged customers. The second is made up of young, educated and middle income customers, and the third group includes young and low income customers. Finally, we can assign each individual in our dataset to one of these groups or segments of customers. Now imagine that you cross join this segmented dataset with the dataset of the product or services that customers purchase from your company. This information would really help to understand and predict the differences and individual customers preferences and their buying behaviors across various products. Indeed, having this information would allow your company to develop highly personalized experiences for each segment. Customer segmentation is one of the popular usages of clustering. Cluster analysis also has many other applications in different domains. So let's first define clustering and then we'll look at other applications. Clustering means finding clusters in a dataset, unsupervised. So what is a cluster?
+
+![images](images/88.png)
+
+A cluster is a group of data points or objects in a dataset that are similar to other objects in the group, and dissimilar to datapoints in other clusters. Now the question is," What is different between clustering and classification?"
+
+![images](images/89.png)
+
+Let's look at our customer dataset again. Classification algorithms predict categorical classed labels. This means assigning instances to predefined classes such as defaulted or not defaulted. For example, if an analyst wants to analyze customer data in order to know which customers might default on their payments, she uses a labeled dataset as training data and uses classification approaches such as a decision tree, Support Vector Machines or SVM, or logistic regression, to predict the default value for a new or unknown customer. Generally speaking, classification is a supervised learning where each training data instance belongs to a particular class. In clustering however, the data is unlabeled and the process is unsupervised. For example, we can use a clustering algorithm such as k-means to group similar customers as mentioned, and assign them to a cluster, based on whether they share similar attributes, such as; age, education, and so on. While I'll be giving you some examples in different industries, I'd like you to think about more samples of clustering.
+
+![images](images/90.png)
+
+![images](images/91.png)
+
+In the retail industry, clustering is used to find associations among customers based on their demographic characteristics and use that information to identify buying patterns of various customer groups. Also, it can be used in recommendation systems to find a group of similar items or similar users and use it for collaborative filtering, to recommend things like books or movies to customers. In banking, analysts find clusters of normal transactions to find the patterns of fraudulent credit card usage. Also they use clustering to identify clusters of customers. For instance, to find loyal customers versus churned customers. In the insurance industry, clustering is used for fraud detection in claims analysis, or to evaluate the insurance risk of certain customers based on their segments. In publication media, clustering is used to auto categorize news based on his content or to tag news, then cluster it so as to recommend similar news articles to readers. In medicine, it can be used to characterize patient behavior, based on their similar characteristics. So as to identify successful medical therapies for different illnesses or in biology, clustering is used to group genes with similar expression patterns or to cluster genetic markers to identify family ties. If you look around you can find many other applications of clustering, but generally clustering can be used for one of the following purposes:
+
+![images](images/92.png)
+
+exploratory data analysis, summary generation or reducing the scale, outlier detection- especially to be used for fraud detection or noise removal, finding duplicates and datasets or as a pre-processing step for either prediction, other data mining tasks or as part of a complex system. Let's briefly look at different clustering algorithms and their characteristics.
+
+![images](images/93.png)
+
+Partition-based clustering is a group of clustering algorithms that produces sphere-like clusters, such as; K-Means, K-Medians or Fuzzy c-Means. These algorithms are relatively efficient and are used for medium and large sized databases. Hierarchical clustering algorithms produce trees of clusters, such as agglomerative and divisive algorithms. This group of algorithms are very intuitive and are generally good for use with small size datasets. Density-based clustering algorithms produce arbitrary shaped clusters. They are especially good when dealing with spatial clusters or when there is noise in your data set. For example, the DB scan algorithm.
+
+#### Intro to k-Means
+
+<mark>
+See the K-Means Video Lecture from lecture-videos folder
+</mark>
+
+![images](images/93.png)
+
+![images](images/94.png)
+
+![images](images/95.png)
+
+![images](images/96.png)
+
+![images](images/97.png)
+
+![images](images/98.png)
+
+![images](images/99.png)
+
+![images](images/100.png)
+
+![images](images/101.png)
+
+![images](images/102.png)
+
+![images](images/103.png)
+
+![images](images/104.png)
+
+![images](images/105.png)
+
+![images](images/106.png)
+
+![images](images/107.png)
+
+#### More on K-Means
+
+Hello and welcome. In this video, we'll look at k-Means accuracy and characteristics. Let's get started. Let's define the algorithm more concretely, before we talk about its accuracy.
+
+![images](images/108.png)
+
+A k-Means algorithm works by randomly placing k centroids, one for each cluster. The farther apart the clusters are placed, the better. The next step is to calculate the distance of each data point or object from the centroids. Euclidean distance is used to measure the distance from the object to the centroid. Please note, however, that you can also use different types of distance measurements, not just Euclidean distance. Euclidean distance is used because it's the most popular. Then, assign each data point or object to its closest centroid creating a group. Next, once each data point has been classified to a group, recalculate the position of the k centroids. The new centroid position is determined by the mean of all points in the group. Finally, this continues until the centroids no longer move.
+
+Now, the questions is, how can we evaluate the goodness of the clusters formed by k-Means? In other words, how do we calculate the accuracy of k-Means clustering?
+
+![images](images/109.png)
+
+One way is to compare the clusters with the ground truth, if it's available. However, because k-Means is an unsupervised algorithm we usually don't have ground truth in real world problems to be used. But there is still a way to say how bad each cluster is, based on the objective of the k-Means. This value is the average distance between data points within a cluster. Also, average of the distances of data points from their cluster centroids can be used as a metric of error for the clustering algorithm.
+
+Essentially, determining the number of clusters in a data set, or k as in the k-Means algorithm, is a frequent problem in data clustering.
+
+![images](images/110.png)
+
+The correct choice of K is often ambiguous because it's very dependent on the shape and scale of the distribution of points in a dataset. There are some approaches to address this problem, but one of the techniques that is commonly used is to run the clustering across the different values of K and looking at a metric of accuracy for clustering.
+This metric can be mean, distance between data points and their cluster's centroid, which indicate how dense our clusters are or, to what extent we minimize the error of clustering. Then, looking at the change of this metric, we can find the best value for K.
+But the problem is that with increasing the number of clusters, the distance of centroids to data points will always reduce. This means increasing K will always decrease the error. So, the value of the metric as a function of K is plotted and the elbow point is determined where the rate of decrease sharply shifts. It is the right K for clustering. This method is called the elbow method.
+
+So let's recap k-Means clustering:
+
+![images](images/111.png)
+
+k-Means is a partition-based clustering which is A, relatively efficient on medium and large sized data sets; B, produces sphere-like clusters because the clusters are shaped around the centroids; and C, its drawback is that we should pre-specify the number of clusters, and this is not an easy task.
+
+**Code for K-Means Clustering**:
+
+```py
+k_means3 = KMeans(init = "k-means++", n_clusters = 3, n_init = 12)
+k_means3.fit(X)
+fig = plt.figure(figsize=(6, 4))
+colors = plt.cm.Spectral(np.linspace(0, 1, len(set(k_means3.labels_))))
+ax = fig.add_subplot(1, 1, 1)
+for k, col in zip(range(len(k_means3.cluster_centers_)), colors):
+    my_members = (k_means3.labels_ == k)
+    cluster_center = k_means3.cluster_centers_[k]
+    ax.plot(X[my_members, 0], X[my_members, 1], 'w', markerfacecolor=col, marker='.')
+    ax.plot(cluster_center[0], cluster_center[1], 'o', markerfacecolor=col,  markeredgecolor='k', markersize=6)
+plt.show()
+```
