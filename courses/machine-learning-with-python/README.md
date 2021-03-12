@@ -29,6 +29,7 @@
       - [Introduction to Clustering](#introduction-to-clustering)
       - [Intro to k-Means](#intro-to-k-means)
       - [More on K-Means](#more-on-k-means)
+      - [Hierarchical Clustering](#hierarchical-clustering)
 
 ### What is Machine Learning
 
@@ -779,3 +780,5 @@ for k, col in zip(range(len(k_means3.cluster_centers_)), colors):
     ax.plot(cluster_center[0], cluster_center[1], 'o', markerfacecolor=col,  markeredgecolor='k', markersize=6)
 plt.show()
 ```
+
+#### Hierarchical Clustering
