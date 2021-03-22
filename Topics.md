@@ -10,14 +10,14 @@
 
 **Supervised Learning**:
 
-- [ ] Linear Regression.
-- [ ] Logistic Regression.
-- [ ] Decision Tree.
-- [ ] SVM.
+- [X] Linear Regression.
+- [X] Logistic Regression.
+- [X] Decision Tree.
+- [X] SVM.
 - [ ] Naive Bayes.
-- [ ] kNN.
-- [ ] K-Means.
+- [X] kNN.
+- [X] K-Means.
 - [ ] Random Forest.
 - [ ] Linear Discriminant Analysis
-- [ ] Neural Networks (Multilayer perceptron)
+- [X] Neural Networks (Multilayer perceptron)
 - [ ] Similarity Learning
