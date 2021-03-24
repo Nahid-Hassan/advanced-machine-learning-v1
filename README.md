@@ -27,3 +27,5 @@ This repository contains all about I learn my `ML` journey.
 <mark>Definitely try this course</mark>
 
 [CertNexus Certified Artificial Intelligence Practitioner Professional Certificate](https://www.coursera.org/professional-certificates/certified-artificial-intelligence-practitioner)
+
+### Coverd Skills
