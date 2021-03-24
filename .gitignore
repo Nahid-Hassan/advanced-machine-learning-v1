@@ -1,6 +1,7 @@
 # ignore csv file list
 ratings.csv
 tags.csv
+practical-statistics-for-data-scientists/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
