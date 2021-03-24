@@ -1,8 +1,18 @@
-## Prepare to Demonstrate these Technical Skills
+# Prepare to Demonstrate these Technical Skills
 
 Here are the essential skills that a Machine Learning Engineer needs, as mentioned in the first video of this lesson. Within each group are topics that you should be familiar with.
 
 **Study Tip**: Copy and paste this list into a document and save to your computer for easy referral.
+
+## Table of Contents
+
+- [Prepare to Demonstrate these Technical Skills](#prepare-to-demonstrate-these-technical-skills)
+  - [Table of Contents](#table-of-contents)
+    - [Computer Science Fundamentals and Programming](#computer-science-fundamentals-and-programming)
+    - [Probability and Statistics](#probability-and-statistics)
+    - [Data Modeling and Evaluation](#data-modeling-and-evaluation)
+    - [Applying Machine Learning Algorithms and Libraries](#applying-machine-learning-algorithms-and-libraries)
+    - [Software Engineering and System Design](#software-engineering-and-system-design)
 
 ### Computer Science Fundamentals and Programming
 
