@@ -28,4 +28,16 @@ This repository contains all about I learn my `ML` journey.
 
 [CertNexus Certified Artificial Intelligence Practitioner Professional Certificate](https://www.coursera.org/professional-certificates/certified-artificial-intelligence-practitioner)
 
-### Coverd Skills
+## Covered Skills
+
+### Computer Science Fundamentals and Programming
+
+- [X] List
+
+### Probability and Statistics
+
+### Data Modeling and Evaluation
+
+### Applying Machine Learning Algorithms and Libraries
+
+### Software Engineering and System Design

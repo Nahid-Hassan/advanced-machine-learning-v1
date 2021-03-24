@@ -15,6 +15,13 @@
       - [Exact Z Score](#exact-z-score)
       - [95% of CI with Exact Z-Score](#95-of-ci-with-exact-z-score)
       - [Generalize Point Estimate](#generalize-point-estimate)
+      - [Generalize CI](#generalize-ci)
+      - [CI Range for Larger Sample Size](#ci-range-for-larger-sample-size)
+      - [CI when n = 250](#ci-when-n--250)
+      - [Z for 98% CI](#z-for-98-ci)
+      - [Find 98% CI](#find-98-ci)
+      - [Critical values of Z](#critical-values-of-z)
+      - [Engagement Ratio](#engagement-ratio)
 
 ### Estimation
 
@@ -183,3 +190,7 @@ print(df.Ratio.mean(), df.Ratio.std())
 ```
 
 ![images](images/17.png)
+
+#### Point Estimate Engagement Ratio
+
+![images](images/18.png)
