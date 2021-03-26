@@ -114,4 +114,3 @@ Now `Katie`(Instructor name) brain,
 Getting Started With sklearn
 
 `search` **sklearn naive bayes** on google.
-
