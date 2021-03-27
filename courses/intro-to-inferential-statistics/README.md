@@ -24,6 +24,11 @@
       - [Engagement Ratio](#engagement-ratio)
       - [Point Estimate Engagement Ratio](#point-estimate-engagement-ratio)
       - [Standard Error](#standard-error)
+      - [Generalize CI # 2](#generalize-ci--2)
+      - [Margin of Error](#margin-of-error)
+      - [Sampling Distribution](#sampling-distribution)
+      - [Z-Score for sample Mean](#z-score-for-sample-mean)
+      - [What is the mean of above z-score](#what-is-the-mean-of-above-z-score)
 
 ### Estimation
 
@@ -216,3 +221,65 @@ n = 20
 SE = sigma / sqrt(n)
 print(SE)
 ```
+
+#### Generalize CI # 2
+
+```py
+import scipy.stats as st
+
+# exact z score
+def exact_z_score(left, right):
+    left = st.norm.ppf(left)
+    right = st.norm.ppf(right)
+
+    return (left, right)
+
+
+# calculate general 95% confidence interval
+def gen_ci(mean, sigma, sample_size,percent=[.025, .975]):
+    left, right = exact_z_score(percent[0], percent[1])
+
+    return (mean + (left * (sigma / sqrt(sample_size))), mean + (right * (sigma / sqrt(sample_size))))
+
+ci = gen_ci(.013, .107, 20)
+print(ci)
+# (-0.033893955920847124, 0.05989395592084711)
+```
+
+![images](images/19.png)
+
+#### Margin of Error
+
+![images](images/20.png)
+
+> **Note**: The margin of error is half the width of the confidence interval.
+
+#### Sampling Distribution
+
+```text
+sampling mean = population mean
+sampling SE = population SD / sqrt(sample size)
+```
+
+![images](images/21.png)
+
+#### Z-Score for sample Mean
+
+```py
+# z = sample_mean - population_mean / sd
+zE = (8.94 - 7.5) / (.64/sqrt(20))
+print(zE)
+# 10.06
+
+zL = (8.35 - 8.2) / (.73/sqrt(20))
+print(zl)
+# .92
+```
+
+![images](images/22.png)
+
+#### What is the mean of above z-score
+
+> **WARNING!! IT'S AN VIDEO LECTURE**
+
+[![Image Alt Text Here](https://img.youtube.com/vi/Hqk1_dUlmo4/0.jpg)](https://www.youtube.com/watch?v=Hqk1_dUlmo4)
