@@ -22,6 +22,8 @@
       - [Find 98% CI](#find-98-ci)
       - [Critical values of Z](#critical-values-of-z)
       - [Engagement Ratio](#engagement-ratio)
+      - [Point Estimate Engagement Ratio](#point-estimate-engagement-ratio)
+      - [Standard Error](#standard-error)
 
 ### Estimation
 
@@ -194,3 +196,23 @@ print(df.Ratio.mean(), df.Ratio.std())
 #### Point Estimate Engagement Ratio
 
 ![images](images/18.png)
+
+#### Standard Error
+
+```text
+sigma : population standard deviation
+
+SE = sigma / sqrt(sample_size)
+```
+
+**Python3 Code**:
+
+```py
+from math import sqrt
+
+sigma = .107
+n = 20
+
+SE = sigma / sqrt(n)
+print(SE)
+```
