@@ -29,6 +29,14 @@
       - [Sampling Distribution](#sampling-distribution)
       - [Z-Score for sample Mean](#z-score-for-sample-mean)
       - [What is the mean of above z-score](#what-is-the-mean-of-above-z-score)
+    - [Hypothesis Testing](#hypothesis-testing)
+      - [Alpha Levels](#alpha-levels)
+      - [Z-Critical Values](#z-critical-values)
+      - [Significance](#significance)
+      - [Z-Score](#z-score)
+      - [Two-Tailed Test](#two-tailed-test)
+      - [Two-Tailed Test for 1%](#two-tailed-test-for-1)
+      - [Two-Tailed Test for 0.1%](#two-tailed-test-for-01)
 
 ### Estimation
 
@@ -283,3 +291,79 @@ print(zl)
 > **WARNING!! IT'S AN VIDEO LECTURE**
 
 [![Image Alt Text Here](https://img.youtube.com/vi/Hqk1_dUlmo4/0.jpg)](https://www.youtube.com/watch?v=Hqk1_dUlmo4)
+
+### Hypothesis Testing
+
+#### Alpha Levels
+
+![images](images/23.png)
+
+#### Z-Critical Values
+
+```py
+import scipy.stats as st
+
+def critical_z(point):
+    return st.norm.ppf(point)
+
+# critical value for 95% or last 5%
+print(critical_z(1 -.05))
+# 1.6448536269514722
+
+# critical value for 99% or last 1%
+print(critical_z(1 - .01))
+# 2.3263478740408408
+
+# critical value for % or last .01%
+print(critical_z(1 -.001))
+# 3.090232306167813
+```
+
+![images](images/24.png)
+
+#### Significance
+
+![images](images/25.png)
+
+#### Z-Score
+
+```py
+from math import sqrt
+
+mu = 7.5 # population mean
+sigma = .64 # SD
+x_var = 7.13 # sample mean
+sample_size = 20
+
+def z_score(x_var, mu, sigma, sample_size):
+    return (x_var - mu) / (sigma /sqrt(sample_size))
+
+print(z_score(x_var, mu, sigma, sample_size))
+# -2.58...
+```
+
+![images](images/26.png)
+
+#### Two-Tailed Test
+
+![images](images/27.png)
+
+#### Two-Tailed Test for 1%
+
+```py
+left = critical_z((1 - .99) / 2)
+right = left * -1
+print(left, right)
+# (-2.5758293035489004, 2.5758293035489004)
+```
+
+![images](images/28.png)
+
+#### Two-Tailed Test for 0.1%
+
+```py
+left = critical_z((1 - .999) / 2)
+right = left * -1
+print(left, right)
+# (-3.2905267314918945, 3.2905267314918945)
+```
