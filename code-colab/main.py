@@ -1,51 +1,78 @@
-# import dependencies
-import tensorflow as tf
-import numpy as np
-import matplotlib.pyplot as plt
-import logging
+# Naive Bayes
+from collections import Counter
 
-# set logger
-# get logger from tensorflow
-logger = tf.get_logger()
-logger.setLevel(logging.ERROR)
+# read normal text file
+file = open('datasets/normal.txt', 'r')
+text = file.read()
+file.close()
 
-# Setup training data
-# feature
-celsius = np.array(np.random.randint(100, size=(100)),  dtype=float)
-# label
+# split text
+text = text.lower()
+text = text.split()  # return list
+len_text = len(text)
 
-fahrenheit = np.array(list(map(lambda x: ((x * 1.8) + 32) , celsius)),  dtype=float)
+# create counter dict
+hist_dict_normal = Counter(text)
+print(hist_dict_normal)
 
-# both celsius and fahrenheit makes an example. [0, 32] is an example
+probability_dict_normal = {}
 
-# create model
-# build layer
+for key, value in hist_dict_normal.items():
+    # p(Dear|Normal)
+    probability_dict_normal[key] = round(value / len_text, 5)
 
-# units = 1 means 1 neuron
-# input_shape=[1] means This specifies that the input to this layer is a single value. That is, the shape is a one-dimensional array with one member. Since this is the first (and only) layer, that input shape is the input shape of the entire model. The single value is a floating point number, representing degrees Celsius.
-l0 = tf.keras.layers.Dense(units=1, input_shape=[1])
+print(probability_dict_normal)
 
-# assemble layers into model
-model = tf.keras.Sequential([l0])
+# read spam text file
+file = open('datasets/spam.txt', 'r')
+text = file.read()
+file.close()
 
-# display model summary
-print(model.summary())
+# split text
+text = text.lower()
+text = text.split()
+len_text = len(text)
 
-# compile the model with loss and optimizer function
-model.compile(loss='mean_squared_error', optimizer=tf.keras.optimizers.Adam(0.1))
+# hist_dict_spam
+hist_dict_spam = Counter(text)
+print(hist_dict_spam)
 
-# fit or train the model
+probability_dict_spam = {}
+for key, value in hist_dict_spam.items():
+    # p(Dear|Spam)
+    probability_dict_spam[key] = round(value / len_text, 5)
 
-history = model.fit(celsius, fahrenheit, epochs=500, verbose=False)
+# probability_dict_spam['lunch'] = 0
+print(probability_dict_spam)
 
-# make prediction
-print(model.predict([100])) # actual result is 100 * 1.8 + 32 = 212
+# Check text "Dear Friend" is normal or spam!!!!!!!!
 
-# print weights
-print(l0.get_weights())
+# p(normal) = 8 / 8 + 4
+# 8 is normal 4 is spam
+p_normal = 8 / (8 + 4)
+p_spam = 4 / (8 + 4)
 
-# display loss graph
-plt.xlabel('Loss')
-plt.ylabel('Epochs')
-plt.plot(history.history['loss'])
-plt.show()
+# p(normal | "dear friend")
+text = 'Dear Friend Money Money'
+text = text.lower()
+
+normal = p_normal
+spam = p_spam
+
+for t in text.lower().split():
+    normal *= probability_dict_normal[t]
+    spam *= probability_dict_spam[t]
+
+    print("Normal: " + str(normal) + ', Spam: ' + str(spam))
+
+print(normal)
+print(spam)
+
+print("Is text 'Dear Friend' is normal or spam?")
+print('Answer: ', end=' ')
+if normal > spam:
+    print("Normal Text")
+elif spam > normal:
+    print("Spam Text")
+else:
+    print("50-50")

@@ -2,6 +2,7 @@
 ratings.csv
 tags.csv
 practical-statistics-for-data-scientists/
+survey_results_public.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
