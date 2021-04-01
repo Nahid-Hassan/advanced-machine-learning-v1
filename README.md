@@ -7,26 +7,38 @@ This repository contains all about I learn my `ML` journey.
 - [Advanced Machine Learning](#advanced-machine-learning)
   - [Table of Contents](#table-of-contents)
     - [All Courses](#all-courses)
-    - [Algorithms List](#algorithms-list)
-    - [Roadmap](#roadmap)
+  - [Must Try](#must-try)
+  - [Covered Skills](#covered-skills)
+    - [Computer Science Fundamentals and Programming](#computer-science-fundamentals-and-programming)
+    - [Probability and Statistics](#probability-and-statistics)
+    - [Data Modeling and Evaluation](#data-modeling-and-evaluation)
+    - [Applying Machine Learning Algorithms and Libraries](#applying-machine-learning-algorithms-and-libraries)
+    - [Software Engineering and System Design](#software-engineering-and-system-design)
 
 ### All Courses
 
+- Machine Learning
+  - Udacity
+  - IBM
+  - Google
+  - Youtube
 - Mathematics
+  - Calculus
+  - Linear Algebra
 - Statistics
+  - Udacity
+  - Coursera
+  - Youtube
 - Python3 (Intermediate)
+  - Fluent Python
+  - Effective Python
+  - Python in Nutshell
 
 1. [Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
 
-### Algorithms List
+## Must Try
 
-1. [Linear Regression](colab-link)
-
-### Roadmap
-
-<mark>Definitely try this course</mark>
-
-[CertNexus Certified Artificial Intelligence Practitioner Professional Certificate](https://www.coursera.org/professional-certificates/certified-artificial-intelligence-practitioner)
+- [CertNexus Certified Artificial Intelligence Practitioner Professional Certificate](https://www.coursera.org/professional-certificates/certified-artificial-intelligence-practitioner)
 
 ## Covered Skills
 
