@@ -1,78 +1,39 @@
-# Naive Bayes
-from collections import Counter
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from itertools import count
 
-# read normal text file
-file = open('datasets/normal.txt', 'r')
-text = file.read()
-file.close()
+actual = 6
 
-# split text
-text = text.lower()
-text = text.split()  # return list
-len_text = len(text)
+posible_pred = list(range(1, 12, 1))
 
-# create counter dict
-hist_dict_normal = Counter(text)
-print(hist_dict_normal)
+b = list(range(-12, 12, 1)) * 10
 
-probability_dict_normal = {}
+index = iter(b)
 
-for key, value in hist_dict_normal.items():
-    # p(Dear|Normal)
-    probability_dict_normal[key] = round(value / len_text, 5)
+cnt = 0
 
-print(probability_dict_normal)
+def animate(i):
+    x = [(actual - posible) * -1 for posible in posible_pred]
+    y = [((actual - posible) * -1) ** 2 for posible in posible_pred]
 
-# read spam text file
-file = open('datasets/spam.txt', 'r')
-text = file.read()
-file.close()
+    global cnt
+    cnt = cnt + 1
 
-# split text
-text = text.lower()
-text = text.split()
-len_text = len(text)
+    c = 0
+    if cnt >= 13:
+        c = next(index)
+        c = c * -1
+    else:
+        c = next(index)
+    a = []
+    a.append(c)
+    print(a)
 
-# hist_dict_spam
-hist_dict_spam = Counter(text)
-print(hist_dict_spam)
+    plt.cla()
+    plt.plot(x, y, 'go', markevery=a)
+    plt.plot(x, y)
 
-probability_dict_spam = {}
-for key, value in hist_dict_spam.items():
-    # p(Dear|Spam)
-    probability_dict_spam[key] = round(value / len_text, 5)
 
-# probability_dict_spam['lunch'] = 0
-print(probability_dict_spam)
-
-# Check text "Dear Friend" is normal or spam!!!!!!!!
-
-# p(normal) = 8 / 8 + 4
-# 8 is normal 4 is spam
-p_normal = 8 / (8 + 4)
-p_spam = 4 / (8 + 4)
-
-# p(normal | "dear friend")
-text = 'Dear Friend Money Money'
-text = text.lower()
-
-normal = p_normal
-spam = p_spam
-
-for t in text.lower().split():
-    normal *= probability_dict_normal[t]
-    spam *= probability_dict_spam[t]
-
-    print("Normal: " + str(normal) + ', Spam: ' + str(spam))
-
-print(normal)
-print(spam)
-
-print("Is text 'Dear Friend' is normal or spam?")
-print('Answer: ', end=' ')
-if normal > spam:
-    print("Normal Text")
-elif spam > normal:
-    print("Spam Text")
-else:
-    print("50-50")
+ani = FuncAnimation(plt.gcf(), animate, interval=1000)
+plt.tight_layout()
+plt.show()
