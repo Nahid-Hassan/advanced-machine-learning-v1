@@ -7,6 +7,10 @@
     - [Introduction to optimization](#introduction-to-optimization)
       - [Course Intro](#course-intro)
       - [Linear Regression](#linear-regression)
+      - [Gradient Descent](#gradient-descent)
+      - [Overfitting problem and model validation](#overfitting-problem-and-model-validation)
+      - [Model regularization](#model-regularization)
+      - [SGD](#sgd)
 
 ### Introduction to optimization
 
@@ -47,3 +51,50 @@ If `y` is belongs to a `finite set` - is classification task
 - `𝑏` — bias
 - `𝑑+1` parameters
 - To make it simple: there’s always a constant feature
+
+#### Gradient Descent
+
+- Easy to **implement**
+- Very general, can be applied to any **differentiable** loss function
+- Requires less memory and **computations** (for stochastic methods)
+- Gradient descent provides a `general learning framework`
+- Can be used both for **classification** and **regression** tasks..
+
+
+`./resources/w1_2_3_gradient.pdf`
+
+#### Overfitting problem and model validation
+
+- **Validation**
+  - Training Set
+  - Holdout Set
+- **Cross Validation**
+  - k-fold cross validation(If `k = 5`, we train our model 5 times.)
+
+**Note**: Cross validation is useful for small dataset. 
+
+**Summary**
+- Models can easily overfit with high number of **parameters**
+- Overfitted model just `remembers target` values for training set and `doesn’t generalize`
+- Holdout set or cross-validation can be used to estimate model performance on new data.
+
+`./resources/w1_3_1_overfit.pdf`
+
+#### Model regularization
+
+Reduce complexity so our model don't overfit.
+
+- L2 Penalty
+- L1 Penalty
+- Dimensionality Reduction
+- Data Augmentation
+- Dropout
+- Early Stopping
+- Collect more data.
+
+`./resources/w1_3_2_regularization.pdf`
+
+#### SGD
+
+`./resources/w1_4_1_sgd.pdf`
+`./resources/w1_4_2_sgd.pdf`
