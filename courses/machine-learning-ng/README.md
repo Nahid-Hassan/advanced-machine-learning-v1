@@ -11,6 +11,10 @@ What is machine learning? You probably use it dozens of times a day without even
       - [What is Machine Learning?](#what-is-machine-learning)
       - [Supervised Learning](#supervised-learning)
       - [Unsupervised Learning](#unsupervised-learning)
+      - [Model Representation](#model-representation)
+      - [Cost Function](#cost-function)
+      - [Cost Function - Intuition I](#cost-function---intuition-i)
+      - [Cost Function - Intuition II](#cost-function---intuition-ii)
   
 ### Introduction
 
@@ -104,3 +108,43 @@ With unsupervised learning there is no feedback based on the prediction results.
 **Non-clustering**: The `"Cocktail Party Algorithm"`, allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).
 
 > Cocktail Party Algorithm
+
+#### Model Representation
+
+- `m`: number of training examples
+- `x`: input variable / **features** 
+- `y`: output variable
+
+Single training example -> (x, y) 
+
+```text
+(x^i, y^i) -> i-th training example
+```
+
+![images](images/5.png)
+
+**Note**: Hypothesis
+
+![images](images/6.png)
+
+#### Cost Function
+
+![images](images/7.png)
+
+![images](images/8.png)
+
+#### Cost Function - Intuition I
+
+![images](images/9.png)
+
+![images](images/10.png)
+
+![images](images/11.png)
+
+#### Cost Function - Intuition II
+
+![images](images/12.png)
+
+![images](images/13.png)
+
+![images](images/14.png)
