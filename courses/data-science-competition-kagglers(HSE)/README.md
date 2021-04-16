@@ -8,6 +8,7 @@
     - [Competition Mechanics](#competition-mechanics)
       - [Recap of Machine Learning Algorithm](#recap-of-machine-learning-algorithm)
       - [Hardware and Software](#hardware-and-software)
+      - [Numeric Futures](#numeric-futures)
 
 ### Week 1 Overview
 
@@ -98,3 +99,75 @@ Arbitrary order factorization machines
 - Another tree-based method: RGF (implementation, paper)
 - Python distribution with all-included packages: Anaconda
 - Blog "datas-frame" (contains posts about effective Pandas usage)
+
+#### Numeric Futures
+
+Basic approach as to `feature preprocessing` and `feature generation` for **numeric** features.
+
+**Feature Scale** are important for Non-tree based Algorithm like
+- KNN
+- Linear Model
+- Linear SVM, SVM
+- and Neural Network.
+
+1. **Preprocessing.scaling**
+
+**Example - 1**:
+
+```py
+# To[0,1]
+
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+
+X = np.array([10, 20, 30])
+print(X)
+
+# scaling
+for m in X:
+    print((m - X.min()) / (X.max() - X.min()))
+```
+
+**Example - 2**:
+
+```py
+data = pd.read_csv('./datasets/titanic_train.csv')
+
+data[['Age', 'SibSp', 'Fare']].hist(figsize=(10, 4))
+xtrain = scalar.fit_transform(data[['Age', 'SibSp', 'Fare']])
+pd.DataFrame(xtrain).hist(figsize=(10,5))
+```
+
+> **Note**: We use preprocessing to scale all features to one scale, so that their initial impact on the model will be roughly similar. For example, as in the recent example where we used KNN for prediction, this could lead to the case where some features will have critical influence on predictions.
+
+**Standard Scalar**:
+
+```py
+# X is numpy array.
+# x is a element of X
+x = (x - X.mean() / x.std())
+```
+
+2. **Outliers**:
+
+**Clip** features values between two chosen values of `lower bound` and `upper bound`. We can choose them as some **percentiles** of that feature. For example, `1st` and `99st` percentiles. This procedure of clipping is well-known in financial data and it is called **winsorization**. 
+
+```py
+# 1 to 99 percentile
+# return lower and upper bound value
+upper_bound, lower_bound = np.percentile(x, [1, 99])
+y = np.clip(x, upper_bound, lower_bound)
+pd.Series(y).hist(bins=30)
+```
+
+3. **Rank**:
+
+If we apply a rank to the source of array, it will just change values to their indices. Now, if we apply a rank to the not-sorted array, it will sort this array, define mapping between values and indices in this source of array, and apply this mapping to the initial array. Linear models, KNN, and neural networks can benefit from this kind of transformation if we have no time to handle outliers manually. Rank can be imported as a random data function from scipy. One more important note about the rank transformation is that to apply to the test data, you need to store the creative mapping from features values to their rank values. Or alternatively, you can concatenate, train, and test data before applying the rank transformation.
+
+```py
+from scipy.stats import rankdata
+
+x = [1,2,3,4,2,3]
+print(rankdata(x))
+# [1.  2.5 4.5 6.  2.5 4.5]
+```
