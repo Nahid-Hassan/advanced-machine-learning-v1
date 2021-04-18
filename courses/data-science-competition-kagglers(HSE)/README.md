@@ -8,8 +8,12 @@
     - [Competition Mechanics](#competition-mechanics)
       - [Recap of Machine Learning Algorithm](#recap-of-machine-learning-algorithm)
       - [Hardware and Software](#hardware-and-software)
+    - [Feature Preprocessing and Generation with respect to Models](#feature-preprocessing-and-generation-with-respect-to-models)
       - [Numeric Futures](#numeric-futures)
       - [Categorical and ordinal features](#categorical-and-ordinal-features)
+      - [Datetime and Coordinates](#datetime-and-coordinates)
+      - [Missing Values](#missing-values)
+      - [Quiz - Feature preprocessing and generation with respect to models](#quiz---feature-preprocessing-and-generation-with-respect-to-models)
 
 ### Week 1 Overview
 
@@ -98,6 +102,8 @@ Welcome to the first week of the "How to Win a Data Science Competition" course!
 - Another tree-based method: RGF (implementation, paper)
 - Python distribution with all-included packages: Anaconda
 - Blog "datas-frame" (contains posts about effective Pandas usage)
+
+### Feature Preprocessing and Generation with respect to Models
 
 #### Numeric Futures
 
@@ -364,4 +370,196 @@ One of most useful examples of feature generation is **feature interaction betwe
 4. Label and Frequency encodings are often used for **tree-based** models.
 5. **One-hot** encoding is often used for **non-tree-based** models
 6. **Interactions of categorical features** can help **linear** models and KNN.
+Coordinates
 
+#### Datetime and Coordinates
+
+**Basic feature** generation approaches for **datetime** and **coordinate** features. 
+
+**Feature Generation for Datetime**:
+
+Datetime is quite a distinct feature because it isn't relying on your nature, it also has several different tiers like **year**, **day** or **week**. Most new features generated from datetime can be divided into `two categories`. The first one, time moments in a **period**, and the second one, time **passed** since particular event.
+
+- Periodicity
+
+```text
+Day number in week, month, season, year, hour, second, minute etc.
+```
+
+> All sample is comparable on the same time scale.
+
+- Time Since
+
+![images](images/1.png)
+
+Date is obviously a **date**, and **sales** are the target of this task.
+
+While other columns are generated features. `weekday` feature indicates which day in the week is this, `day_number_since_year_2014` indicates how many days have passed since January 1st, 2014. `is_holiday` is a binary feature indicating whether this day is a holiday and `days_ till_ holidays` indicate how many days are left before the closest holiday. Sometimes we have several datetime columns in our data. The most for data here is to **subtract one feature from another**.
+
+```py
+import datetime
+
+date = ['01.01.2014', '02.01.2014', '03.01.2014', '04.01.2014', '05.01.2014', '06.01.2014']
+sales = [1213, 938, 2448, 1744, 1732, 1022]
+
+df = pd.DataFrame({'date': date, 'sales': sales})
+df.head()
+"""
+         date  sales
+0  01.01.2014   1213
+1  01.02.2014    938
+2  01.03.2014   2448
+3  01.04.2014   1744
+4  01.05.2014   1732
+"""
+
+# convert str to datetime
+df['date'] = pd.to_datetime(df['date'])
+
+# create new column dayname
+df['dayname'] = df.date.apply(lambda x : x.day_name())
+df.head()
+"""
+        date  sales    dayname
+0 2014-01-01   1213  Wednesday
+1 2014-01-02    938   Thursday
+2 2014-01-03   2448     Friday
+3 2014-01-04   1744   Saturday
+4 2014-01-05   1732     Sunday
+"""
+# is_holiday
+df['is_holiday'] = df.date.apply(lambda x: "Yes" if x.isoweekday() == 5 else "No")
+
+# day number since year 2021
+df['daynumber_since_year_2021'] = df.date.dt.dayofyear - df.date.dt.dayofyear[0]
+df.head()
+
+# final output
+"""
+        date  sales    dayname is_holiday  daynumber_since_year_2021
+0 2014-01-01   1213  Wednesday         No                          0
+1 2014-01-02    938   Thursday         No                          1
+2 2014-01-03   2448     Friday        Yes                          2
+3 2014-01-04   1744   Saturday         No                          3
+4 2014-01-05   1732     Sunday         No                          4
+"""
+```
+
+**Feature Generation for Coordinates**:
+
+- Generally, you can **calculate distances to important points on the map**.
+
+![images](images/2.png)
+
+
+- Keep this wonderful map. If you have additional data with infrastructural buildings, you can add as a **feature distance** to the nearest shop to the second by distance hospital, to the best school in the neighborhood and so on.
+- If you do not have such data, you can extract interesting points on the map from your trained test data. For example, you can do a new map to **squares**, with a **grid**, and within each square, find the most **expensive** flat, and for every other object in this square, add the distance to that flat. Or you can organize your data points into **clusters**, and then use centers of clusters as such important points.
+- Or again, another way. You can find some special areas, like the area with very old buildings and add distance to this one.
+- Another major approach to use coordinates is to calculate **aggregated statistics for objects surrounding area**. This can include number of lets around this particular point, which can then be interpreted as areas or polarity.
+- Or we can add mean realty price, which will indicate how expensive area around selected point is.
+
+Both **distances** and **aggregate statistics** are often useful in tasks with coordinates.
+
+![images](images/3.png)
+
+
+- One more trick you need to know about coordinates, that if you train decision trees from them, you can add **slightly rotated coordinates** is new features. And this will help a model make more precise selections on the map.
+It can be hard to know what exact rotation we should make, so we may want to add all rotations to 45 or 22.5 degrees.
+- Let's look at the next example of a relative price prediction.
+Here the street is dividing an area in two parts. `The high priced district above the street, and the low priced district below it`. If the street is **slightly rotated, trees will try to make a lot of space here**. But if we will add new coordinates in which these two districts can be divided by a single split, this will hugely facilitate the rebuilding process.
+
+**Summary**
+
+- Datetime
+  - **Periodicity**
+  - Time since row-independent/dependent event
+  - **Difference** between dates
+- Coordinates
+  - Interesting places from train/test data or additional data
+  - **Centers of clusters**.
+  - **Aggregated statistics**
+
+#### Missing Values
+
+Often we have to deal with missing values in our data. They could look like not **numbers**, **empty strings**, or **outliers** like minus `999`.
+
+**Hidden NaN**
+
+![images](images/4.png)
+
+For example, how can we found out that `-1` can be the missing value? We could draw a **histogram** and see this variable has **uniform distribution** between `0 and 1`. And that it has small peak of `-1` values. So if there are no not numbers there, we can assume that they were replaced by -1.
+
+**Fillna Approaches**
+
+Great, let's talk about missing value **importation**. The most often examples are: 
+1. Replacing not a number with some value outside **fixed value range**. 
+> First method is useful in a way that it gives **tree** **possibility** to take missing value into **separate category**. The **downside** of this is that **performance** of **linear networks can suffer**.
+2. Replacing not a number with **mean** or **median**.
+> Second method usually **beneficial** for simple **linear models** and **neural networks**. But again for **trees** it can be **harder** to select object which had missing values in the first place.
+
+**isnull features**:
+
+```py
+import pandas as pd
+import numpy as np
+
+features = np.array([0.1, 0.9,5, np.NaN, -3,np.NaN])
+df = pd.DataFrame({'features': features})
+df.head()
+
+df['isnull'] = df.isnull()
+df.head()
+"""
+   features  isnull
+0       0.1   False
+1       0.9   False
+2       5.0   False
+3       NaN    True
+4      -3.0   False
+"""
+```
+> New feature **isnull** indicating which **rows** have **missing** values for this feature. This can solve problems with **trees** and **neural networks** while computing **mean** or **median**. But the **downside** of this is that we will **double number of columns** in the data set.
+
+3. Trying to **reconstruct** value somehow.
+
+... is to reconstruct each value if possible. One example of such possibility is having missing values in **time series**. For example, we could have everyday temperature for a month but several values in the middle of months are missing.
+
+![images](images/5.png)
+
+Well of course, **we can approximate them using nearby observations**. But obviously, this kind of opportunity is rarely the case. In most typical scenario rows of our `data set are independent`. And we usually will not find any proper logic to reconstruct them.
+
+![images](images/6.png)
+
+... near the missing values this difference usually will be **abnormally** huge. And this can be **misleading** our model. But hey, we already know that we can approximate missing values sometimes here by interpolation the error by points, great. But unfortunately, we usually don't have enough time to be so careful here. And more importantly, these problems can occur in cases when we can't come up with such specific solution.
+
+
+#### Quiz - Feature preprocessing and generation with respect to models
+
+1. What type does a feature with values: [‘low’, ‘middle’, ‘high’] most likely have?
+
+**Answer**: Ordinal(Ordered Categorical)
+
+2. Suppose you have a dataset X, and a version of X where each feature has been standard scaled. For which model types training or testing quality can be much different depending on the choice of the dataset?
+
+**Answer**: Linear Models, KNN, Neural Networks
+
+3. Suppose we want to fit a GBDT model to a data with a categorical feature. We need to somehow encode the feature. Which of the following statements are true?
+
+**Answer**: Depending on the dataset either of label encoder or one-hot encoder could be better
+
+4. What can be useful to do about missing values?
+
+**Answer**:
+a) Impute with a feature mean
+b) Replace them with a constant (-1/-999/etc.)
+c) Reconstruct them (for example train a model to predict the missing values)
+
+**Additional Material and Links**
+
+- Feature preprocessing
+  - [Preprocessing in Sklearn](https://scikit-learn.org/stable/modules/preprocessing.html)
+  - [Andrew NG about gradient descent and feature scaling](https://www.coursera.org/learn/machine-learning)
+  - [Feature Scaling and the effect of standardization for machine learning algorithms](https://sebastianraschka.com/Articles/2014_about_feature_scaling.html)
+- Feature generation
+  - [Discover Feature Engineering, How to Engineer Features and How to Get Good at It](https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/)
+  - [Discussion of feature engineering on Quora](https://www.quora.com/What-are-some-best-practices-in-Feature-Engineering)
