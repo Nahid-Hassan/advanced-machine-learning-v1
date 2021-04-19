@@ -14,6 +14,7 @@
       - [Datetime and Coordinates](#datetime-and-coordinates)
       - [Missing Values](#missing-values)
       - [Quiz - Feature preprocessing and generation with respect to models](#quiz---feature-preprocessing-and-generation-with-respect-to-models)
+      - [Bag of Words](#bag-of-words)
 
 ### Week 1 Overview
 
@@ -216,15 +217,15 @@ Or even, we can use our intuition and experience to create new features that sig
 
 **Ordinal Features**:
 
-... Pclass stands for ticket class, and has three unique values: one, two, and three. It is **ordinal** or, in other words, **order categorical feature**. This basically means that it is ordered in some meaningful way. For example, if the first class was more expensive than the second, or the more the first should be more expensive than the third. **We should make an important note here about differences between ordinal and numeric features**. 
+... Pclass stands for ticket class, and has three unique values: one, two, and three. It is **ordinal** or, in other words, **order categorical feature**. This basically means that it is ordered in some meaningful way. For example, if the first class was more expensive than the second, or the more the first should be more expensive than the third. **We should make an important note here about differences between ordinal and numeric features**.
 
-> If Pclass would have been a numeric feature, we could say that the difference between first, and the second class is equal to the difference between second and the third class, but because Pclass is ordinal, we don't know which difference is bigger. 
+> If Pclass would have been a numeric feature, we could say that the difference between first, and the second class is equal to the difference between second and the third class, but because Pclass is ordinal, we don't know which difference is bigger.
 
 As these numeric features, we can't sort and integrate an ordinal feature the other way, and expect to get similar performance. Another example for ordinal feature is a driver's license type. It's either A, B, C, or D. Or another example, level of education, kindergarten, school, undergraduate, bachelor, master, and doctoral.
 
 **Label Encoder**:
 
-The simplest way to **encode** a `categorical feature` is to **map** it's unique values to different numbers. Usually, people referred to this procedure as **label encoding**. This method works fine with two ways because tree-methods can split feature, and extract most of the useful values in categories on its own. Non-tree-based-models, on the other side, usually can't use this feature effectively. And if you want to train linear model kNN on neural network, you need to treat a categorical feature differently. 
+The simplest way to **encode** a `categorical feature` is to **map** it's unique values to different numbers. Usually, people referred to this procedure as **label encoding**. This method works fine with two ways because tree-methods can split feature, and extract most of the useful values in categories on its own. Non-tree-based-models, on the other side, usually can't use this feature effectively. And if you want to train linear model kNN on neural network, you need to treat a categorical feature differently.
 
 > **Tree based(Decision Tree)** model work fine with categorical values. But **Non-tree** based model like **Linear Models** cannot very effective with this features.
 
@@ -257,7 +258,7 @@ print(factorize(l))
 
 **Frequency Encoding**
 
-Frequency encoding, we can encode this feature via mapping values to their frequencies. Even 30 percent for us embarked is equal to c and 50 to s and the rest 20 is equal to q. We can change this values accordingly: `c` to `0.3`, `s` to `0.5` , and `q` to `0.2`. This will preserve some information about values distribution, and can help both **linear** and **tree** models. First ones, can find this feature useful if value frequency is correlated to it's target value. While the second ones can help with less number of split because of the same reason. There is another important moment about frequency encoding. 
+Frequency encoding, we can encode this feature via mapping values to their frequencies. Even 30 percent for us embarked is equal to c and 50 to s and the rest 20 is equal to q. We can change this values accordingly: `c` to `0.3`, `s` to `0.5` , and `q` to `0.2`. This will preserve some information about values distribution, and can help both **linear** and **tree** models. First ones, can find this feature useful if value frequency is correlated to it's target value. While the second ones can help with less number of split because of the same reason. There is another important moment about frequency encoding.
 
 ```py
 import pandas as pd
@@ -271,7 +272,7 @@ titanic['enc'] = titanic.Embarked.map(encoding)
 titanic.head()
 """
 In [61]: titanic.enc.head()
-Out[61]: 
+Out[61]:
 0    0.722783
 1    0.188552
 2    0.722783
@@ -301,7 +302,7 @@ print(rankdata(x))
 
 ![images](images/onehot.png)
 
-The way to identify categorical features to non-tree-based-models is also quite straightforward. We need to make new code for each unique value in the future, and put one in the appropriate place. Everything else will be zeroes. This method is called, one-hot encoding. Let's see how it works on this quick example. So here, for each unique value of Pclass feature, we just created a new column. As I said, this works well for linear methods, kNN, or neural networks. Furthermore, one -hot encoding feature is already scaled because minimum this feature is zero, and maximum is one. Note that if you care for a fewer important numeric features, and hundreds of binary features are used by one-hot encoding, it could become difficult for tree-methods they use first ones efficiently. More precisely, tree-methods will slow down, not always improving their results. Also, it's easy to imply that if categorical feature has too many unique values, we will add too many new columns with a few non-zero values. To store these new array efficiently, we must know about sparse matrices. In a nutshell, instead of allocating space in RAM for every element of an array, we can store only non-zero elements and thus, save a lot of memory. Going with sparse matrices makes sense if number of non-zero values is far less than half of all the values. Sparse matrices are often useful when they work with categorical features or text data. Most of the popular libraries can work with these sparse matrices directly namely, **XGBoost**, **LightGBM**, **sklearn**, and others. 
+The way to identify categorical features to non-tree-based-models is also quite straightforward. We need to make new code for each unique value in the future, and put one in the appropriate place. Everything else will be zeroes. This method is called, one-hot encoding. Let's see how it works on this quick example. So here, for each unique value of Pclass feature, we just created a new column. As I said, this works well for linear methods, kNN, or neural networks. Furthermore, one -hot encoding feature is already scaled because minimum this feature is zero, and maximum is one. Note that if you care for a fewer important numeric features, and hundreds of binary features are used by one-hot encoding, it could become difficult for tree-methods they use first ones efficiently. More precisely, tree-methods will slow down, not always improving their results. Also, it's easy to imply that if categorical feature has too many unique values, we will add too many new columns with a few non-zero values. To store these new array efficiently, we must know about sparse matrices. In a nutshell, instead of allocating space in RAM for every element of an array, we can store only non-zero elements and thus, save a lot of memory. Going with sparse matrices makes sense if number of non-zero values is far less than half of all the values. Sparse matrices are often useful when they work with categorical features or text data. Most of the popular libraries can work with these sparse matrices directly namely, **XGBoost**, **LightGBM**, **sklearn**, and others.
 
 ```py
 from sklearn.preprocessing import OneHotEncoder
@@ -364,17 +365,17 @@ One of most useful examples of feature generation is **feature interaction betwe
 
 **Summary**:
 
-1. Values in **ordinal** features are sorted in some meaningful order. 
-2. Label encoding **maps** categories to numbers 
+1. Values in **ordinal** features are sorted in some meaningful order.
+2. Label encoding **maps** categories to numbers
 3. Frequency encoding maps categories to their **frequencies**
 4. Label and Frequency encodings are often used for **tree-based** models.
 5. **One-hot** encoding is often used for **non-tree-based** models
 6. **Interactions of categorical features** can help **linear** models and KNN.
-Coordinates
+   Coordinates
 
 #### Datetime and Coordinates
 
-**Basic feature** generation approaches for **datetime** and **coordinate** features. 
+**Basic feature** generation approaches for **datetime** and **coordinate** features.
 
 **Feature Generation for Datetime**:
 
@@ -451,7 +452,6 @@ df.head()
 
 ![images](images/2.png)
 
-
 - Keep this wonderful map. If you have additional data with infrastructural buildings, you can add as a **feature distance** to the nearest shop to the second by distance hospital, to the best school in the neighborhood and so on.
 - If you do not have such data, you can extract interesting points on the map from your trained test data. For example, you can do a new map to **squares**, with a **grid**, and within each square, find the most **expensive** flat, and for every other object in this square, add the distance to that flat. Or you can organize your data points into **clusters**, and then use centers of clusters as such important points.
 - Or again, another way. You can find some special areas, like the area with very old buildings and add distance to this one.
@@ -462,11 +462,10 @@ Both **distances** and **aggregate statistics** are often useful in tasks with c
 
 ![images](images/3.png)
 
-
 - One more trick you need to know about coordinates, that if you train decision trees from them, you can add **slightly rotated coordinates** is new features. And this will help a model make more precise selections on the map.
-It can be hard to know what exact rotation we should make, so we may want to add all rotations to 45 or 22.5 degrees.
+  It can be hard to know what exact rotation we should make, so we may want to add all rotations to 45 or 22.5 degrees.
 - Let's look at the next example of a relative price prediction.
-Here the street is dividing an area in two parts. `The high priced district above the street, and the low priced district below it`. If the street is **slightly rotated, trees will try to make a lot of space here**. But if we will add new coordinates in which these two districts can be divided by a single split, this will hugely facilitate the rebuilding process.
+  Here the street is dividing an area in two parts. `The high priced district above the street, and the low priced district below it`. If the street is **slightly rotated, trees will try to make a lot of space here**. But if we will add new coordinates in which these two districts can be divided by a single split, this will hugely facilitate the rebuilding process.
 
 **Summary**
 
@@ -491,11 +490,12 @@ For example, how can we found out that `-1` can be the missing value? We could d
 
 **Fillna Approaches**
 
-Great, let's talk about missing value **importation**. The most often examples are: 
-1. Replacing not a number with some value outside **fixed value range**. 
-> First method is useful in a way that it gives **tree** **possibility** to take missing value into **separate category**. The **downside** of this is that **performance** of **linear networks can suffer**.
+Great, let's talk about missing value **importation**. The most often examples are:
+
+1. Replacing not a number with some value outside **fixed value range**.
+   > First method is useful in a way that it gives **tree** **possibility** to take missing value into **separate category**. The **downside** of this is that **performance** of **linear networks can suffer**.
 2. Replacing not a number with **mean** or **median**.
-> Second method usually **beneficial** for simple **linear models** and **neural networks**. But again for **trees** it can be **harder** to select object which had missing values in the first place.
+   > Second method usually **beneficial** for simple **linear models** and **neural networks**. But again for **trees** it can be **harder** to select object which had missing values in the first place.
 
 **isnull features**:
 
@@ -518,6 +518,7 @@ df.head()
 4      -3.0   False
 """
 ```
+
 > New feature **isnull** indicating which **rows** have **missing** values for this feature. This can solve problems with **trees** and **neural networks** while computing **mean** or **median**. But the **downside** of this is that we will **double number of columns** in the data set.
 
 3. Trying to **reconstruct** value somehow.
@@ -531,7 +532,6 @@ Well of course, **we can approximate them using nearby observations**. But obvio
 ![images](images/6.png)
 
 ... near the missing values this difference usually will be **abnormally** huge. And this can be **misleading** our model. But hey, we already know that we can approximate missing values sometimes here by interpolation the error by points, great. But unfortunately, we usually don't have enough time to be so careful here. And more importantly, these problems can occur in cases when we can't come up with such specific solution.
-
 
 #### Quiz - Feature preprocessing and generation with respect to models
 
@@ -563,3 +563,156 @@ c) Reconstruct them (for example train a model to predict the missing values)
 - Feature generation
   - [Discover Feature Engineering, How to Engineer Features and How to Get Good at It](https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/)
   - [Discussion of feature engineering on Quora](https://www.quora.com/What-are-some-best-practices-in-Feature-Engineering)
+
+#### Bag of Words
+
+Hi. Often in competition, we have data like **text** and **images**. If you have only them, we can apply approach specific for this type of data. For example, we can use `search engines` in order to find similar text. That was the case in the Allen AI Challenge for example. For images, on the other hand, we can use **CNN**, like in the Data Science Bowl, and a whole bunch of other competitions. **But if we have text or images as additional data, we usually must grasp different features**, which can be edited as complementary to our main data frame of samples and features. Very simple example of such case we can see in the **Titanic** dataset we have called **name**, `which is more or less like text`, and to use it, we first need to **derive the useful features from it**. Another most surest example,
+
+> we can predict whether a **pair of online advertisements** are **duplicates**, like **slightly different copies** of each other, and we could have images from these advertisements as complimentary data, like the Avito Duplicates Ads Detection competition. Or you may be given the task of classifying documents, like in the Tradeshift Text Classification Challenge.
+
+> **Ensembles (Important)**
+
+**Feature Extraction from Text**
+
+![images](images/7.png)
+
+**Bag of Words**:
+
+![images](images/8.png)
+
+```py
+from sklearn.feature_extraction.text import CountVectorizer
+
+text = ['(excited) Hi everyone', "I'm so excited about this course!", "So excited, SO EXCITED, EXCITED, I AM!"]
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(text)
+print(vectorizer.get_feature_names())
+print(X.toarray())
+"""
+['about', 'am', 'course', 'everyone', 'excited', 'hi', 'so', 'this']
+[[0 0 0 1 1 1 0 0]
+ [1 0 1 0 1 0 1 1]
+ [0 1 0 0 3 0 2 0]]
+"""
+```
+
+![images](images/9.png)
+
+Here we create new column for each unique word from the data, then we simply count number of **occurences** for each word, and place this value in the appropriate **column**. After applying the separation to each row, we will have usual dataframe of samples and features.
+
+**Scaling BOW**:
+
+We also can **post process calculated metrics** using some pre-defined methods. To make out why we need post-processing let's remember that some models like **kNN**, like **linear regression**, and **neural networks**, **depend on scaling of features**. So the main goal of post-processing here is to make samples more comparable on one side, and on the other, boost more important features while decreasing the scale of useless ones.
+
+**Normalize sum of values in a row or Term Frequency**:
+
+```py
+X = X.toarray()
+tf = 1 / X.sum(axis=1) # axis=1 is for row
+X = X * tf.reshape(-1, 1)
+bow = pd.DataFrame(data=X, columns=vectorizer.get_feature_names())
+bow.head()
+```
+
+![images](images/10.png)
+
+> **Note**: ndarray. **sum(axis=0)** to calculate the sum of each **column** in numpy. ndarray . Setting **axis to 1** would calculate the sum of each **row**.
+
+**Inverse Document Frequency(IDF)**
+
+A good idea is to normalize each feature by the inverse fraction of documents, which contain the exact word corresponding to this feature.
+
+We can further improve this idea by taking a logarithm of these numberization coefficients. As a result, this will decrease the significance of widespread words in the dataset and do require feature scaling. This is the purpose of inverse document frequency transformation.
+
+```py
+from sklearn.feature_extraction.text import CountVectorizer
+
+text = ['(excited) Hi everyone', "I'm so excited about this course!", "So excited, SO EXCITED, EXCITED, I AM!"]
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(text)
+X = X.toarray()
+idf = np.log(X.shape[0] / (X > 0).sum(axis=0)) # column wise
+X = X * idf
+
+bow = pd.DataFrame(data=X, columns=vectorizer.get_feature_names())
+bow.head()
+```
+
+![images](images/11.png)
+
+**sklearn.feature_extraction.text.TfidfVectorizer**:
+
+```py
+from sklearn.feature_extraction.text import TfidfVectorizer
+v = TfidfVectorizer()
+m = v.fit_transform(text)
+print(m.toarray())
+"""
+array([[0.        , 0.        , 0.        , 0.65249088, 0.38537163,
+        0.65249088, 0.        , 0.        ],
+       [0.50461134, 0.        , 0.50461134, 0.        , 0.29803159,
+        0.        , 0.38376993, 0.50461134],
+       [0.        , 0.39365673, 0.        , 0.        , 0.69750001,
+        0.        , 0.59877217, 0.        ]])
+"""
+```
+
+**N-grams**
+
+![images](images/12.png)
+
+> If you have 28 unique symbols, the number of all possible combinations is equal to 28 \* 28.
+
+```py
+"""
+ngram_range: tuple (min_n, max_n), default=(1, 1)
+The lower and upper boundary of the range of n-values for
+different word n-grams or char n-grams to be extracted.
+All values of n such such that min_n <= n <= max_n will be used.
+For example an ngram_range of (1, 1) means only
+unigrams, (1, 2) means unigrams and bigrams,
+and (2, 2) means only bigrams. Only applies if analyzer is not callable.
+
+analyzer: {‘word’, ‘char’, ‘char_wb’} or callable, default=’word’
+
+"""
+from sklearn.feature_extraction.text import CountVectorizer
+
+t = [(1,1), (2,2), (3,3)]
+
+for a in t:
+    vectorizer = CountVectorizer(ngram_range=a, analyzer='word')
+    print(vectorizer)
+    vectorizer.fit(text)
+    print(vectorizer.get_feature_names(),end='\n\n')
+
+"""
+CountVectorizer()
+['about', 'am', 'course', 'everyone', 'excited', 'hi', 'so', 'this']
+
+CountVectorizer(ngram_range=(2, 2))
+['about this', 'excited about', 'excited am', 'excited excited', 'excited hi',
+'excited so', 'hi everyone', 'so excited', 'this course']
+
+CountVectorizer(ngram_range=(3, 3))
+['about this course', 'excited about this', 'excited excited am',
+'excited hi everyone', 'excited so excited', 'so excited about',
+'so excited excited', 'so excited so']
+"""
+```
+
+**Text Preprocessing**:
+
+- Lowercase
+- Lemmatization
+- Stemming
+- Stopwords
+
+**Lowercase**:
+
+![images](images/13.png)
+
+Let's consider simple example which shows utility of lowercase. What if we applied bag of words to the sentence very, very sunny? We will get three columns for each word. So because Very, with capital letter, is not the same string as very without it, we will get multiple columns for the same word, and again, Sunny with capital letter doesn't match sunny without it. So, first preprocessing what we want to do is to apply lowercase to our text. Fortunately, configurizer from sklearn does this by default.
+
