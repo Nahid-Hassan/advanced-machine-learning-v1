@@ -15,6 +15,7 @@
       - [Missing Values](#missing-values)
       - [Quiz - Feature preprocessing and generation with respect to models](#quiz---feature-preprocessing-and-generation-with-respect-to-models)
       - [Bag of Words](#bag-of-words)
+      - [Word2vec, CNN](#word2vec-cnn)
 
 ### Week 1 Overview
 
@@ -716,3 +717,18 @@ CountVectorizer(ngram_range=(3, 3))
 
 Let's consider simple example which shows utility of lowercase. What if we applied bag of words to the sentence very, very sunny? We will get three columns for each word. So because Very, with capital letter, is not the same string as very without it, we will get multiple columns for the same word, and again, Sunny with capital letter doesn't match sunny without it. So, first preprocessing what we want to do is to apply lowercase to our text. Fortunately, configurizer from sklearn does this by default.
 
+#### Word2vec, CNN
+
+![images](images/14.png)
+
+Just as the **Bag of Words** approach, we want to get **vector representations of words and texts**, but now more concise than before. **Word2vec** is doing exactly that. It converts each word to some vector in some sophisticated space, which usually have several **hundred dimensions**. To learn the word **embedding**, **Word2vec** uses nearby words. Basically, different words, which often are used in the same context, will be very close in these vectoring representation, which, of course, will benefit our models. Furthermore, there are some prominent examples showing that we can apply basic operations like **addition and subtraction on these vectors and expect results of such operations to be interpretable**. You should already have seen this example by now somewhere. Basically, if we calculate differences between the vectors of words `queen` and `king`, and differences between the vectors of words `woman` and `man`, we will find that these differences are very similar to each other. And, if we try to see this from another perspective, and `subtract the vector of woman from the vector of king and then and the vector of man, will pretty much again the vector of the word queen`. Think about it for a moment. This is fascinating fact and indeed creation of Word2vec approach led to many extensive and far reaching results in the field. There are several implementations of this embedding approach besides Word2vec.
+
+![images](images/15.png)
+
+> **Glove**, which stands for **Global Vector for word representation**. **FastText** and few others. Complications may occur, if we need to derive vectors not for words but for sentences. Here, we may take different approaches. For example, we can calculate mean or sum of words vectors or we can choose another way and go with special models like **Doc2vec**. **Choice all the way to proceed here depends on and particular situation. Usually, it is better to check both approaches and select the best**. Training of Word2vec can take quite a long time, and if you work with text or some common origin, you may find useful **pre-trained models on the internet**. For example, ones which are trained on the **Wikipedia**. Otherwise, remember, the training of Word2vec doesn't require target values from your text. It only requires text to extract context for each word. Note, that all pre-processing we had discussed earlier, namely **lowercase** **stemming**, **lemmatization**, and the usage of **stopwords** can be applied to text **before training Word2vec models**.
+
+**Convolutional Neural Network**
+
+Similar to Word2vec for words, Convolutional neural networks can give us compressed representation for an image.
+
+![images](images/16.png)
