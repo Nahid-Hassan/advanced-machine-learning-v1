@@ -44,7 +44,6 @@ Welcome to the first week of the "How to Win a Data Science Competition" course!
   Packages: Scikit-Learn, vowpal-wabblt(for large dataset)
 - **Tree Based**: `Decision Tree`, `Random Forest`, `GBDT(Gradient Boaster Decision Tree)`
   Packages: Scikit-Learn, XGBoost(faster, dmlc), lightBGM(faster, microsoft)
-
 - **KNN**: Scikit-Learn(Allow your own custom distance function.)
 - **Neural Network**: Tensorflow, Keras, Pytroch(Flexible), Lasagnes.
 
@@ -196,8 +195,9 @@ np.sqrt(x + 2/3)
 
 If you have columns, Real Estate price and Real Estate squared area in the dataset, we can quickly add one more feature, `price per meter square`. Easy, and this seems quite reasonable.
 
+
 | Squared Area | Price     | Price per m^2 (new feature) |
-| ------------ | --------- | --------------------------- |
+| -------------- | ----------- | ----------------------------- |
 | `55 m^2`     | `107000$` | `107000 / 55 m^2`           |
 
 ```py
@@ -495,8 +495,10 @@ Great, let's talk about missing value **importation**. The most often examples a
 
 1. Replacing not a number with some value outside **fixed value range**.
    > First method is useful in a way that it gives **tree** **possibility** to take missing value into **separate category**. The **downside** of this is that **performance** of **linear networks can suffer**.
+   >
 2. Replacing not a number with **mean** or **median**.
    > Second method usually **beneficial** for simple **linear models** and **neural networks**. But again for **trees** it can be **harder** to select object which had missing values in the first place.
+   >
 
 **isnull features**:
 
@@ -729,6 +731,6 @@ Just as the **Bag of Words** approach, we want to get **vector representations o
 
 **Convolutional Neural Network**
 
-Similar to Word2vec for words, Convolutional neural networks can give us compressed representation for an image.
+Similar to Word2vec for words, Convolutional neural networks can give us compressed **representation** for an image.
 
 ![images](images/16.png)
