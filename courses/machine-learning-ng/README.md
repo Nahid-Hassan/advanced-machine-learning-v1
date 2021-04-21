@@ -15,6 +15,9 @@ What is machine learning? You probably use it dozens of times a day without even
       - [Cost Function](#cost-function)
       - [Cost Function - Intuition I](#cost-function---intuition-i)
       - [Cost Function - Intuition II](#cost-function---intuition-ii)
+      - [Gradient Descent](#gradient-descent)
+      - [Gradient Descent Intuition](#gradient-descent-intuition)
+      - [Gradient Descent For Linear Regression](#gradient-descent-for-linear-regression)
   
 ### Introduction
 
@@ -148,3 +151,28 @@ Single training example -> (x, y)
 ![images](images/13.png)
 
 ![images](images/14.png)
+
+#### Gradient Descent
+
+Gradient Descent **minimizing** the **cost/loss** function. It not only used on **Linear Regression** but actually used all over the place in Machine learning.
+
+![images](images/16.png)
+
+![images](images/15.png)
+
+![images](images/17.png)
+
+#### Gradient Descent Intuition
+
+![images](images/18.png)
+
+![images](images/19.png)
+
+![images](images/20.png)
+
+#### Gradient Descent For Linear Regression
+
+![images](images/21.png)
+
+![images](images/22.png)
+
