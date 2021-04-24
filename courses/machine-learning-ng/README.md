@@ -18,6 +18,8 @@ What is machine learning? You probably use it dozens of times a day without even
       - [Gradient Descent](#gradient-descent)
       - [Gradient Descent Intuition](#gradient-descent-intuition)
       - [Gradient Descent For Linear Regression](#gradient-descent-for-linear-regression)
+    - [Linear Regression with Multiple Variables](#linear-regression-with-multiple-variables)
+      - [Multiple Features](#multiple-features)
   
 ### Introduction
 
@@ -175,4 +177,8 @@ Gradient Descent **minimizing** the **cost/loss** function. It not only used on 
 ![images](images/21.png)
 
 ![images](images/22.png)
+
+### Linear Regression with Multiple Variables
+
+#### Multiple Features
 

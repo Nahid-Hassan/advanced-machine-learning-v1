@@ -17,6 +17,8 @@
       - [The Challenge of Rising Health Care Costs](#the-challenge-of-rising-health-care-costs)
       - [The Challenges of Quality and Access](#the-challenges-of-quality-and-access)
       - [The Challenges of Quality and Access](#the-challenges-of-quality-and-access-1)
+    - [Physicians, Physician Practices, and Physician Payment](#physicians-physician-practices-and-physician-payment)
+      - [Characteristics of Physician Practices](#characteristics-of-physician-practices)
 
 ### Overview of Healthcare Systems and Key Challenges They Face
 
@@ -142,3 +144,7 @@ Correct answers to this question could describe challenges in different ways.  O
 - **Underuse**: People don’t use enough of a beneficial service (e.g. vaccines).
 - **Overuse**: Services that only have value for some patients are used by others as well (e.g. MRI scans are given to every person who comes to the emergency department for back pain).
 - **Misuse**: Giving a patient a service when it is not indicated (e.g. giving blood thinners to patient in whom they are contraindicated).
+
+### Physicians, Physician Practices, and Physician Payment
+
+#### Characteristics of Physician Practices
