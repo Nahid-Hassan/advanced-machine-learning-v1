@@ -20,6 +20,10 @@ What is machine learning? You probably use it dozens of times a day without even
       - [Gradient Descent For Linear Regression](#gradient-descent-for-linear-regression)
     - [Linear Regression with Multiple Variables](#linear-regression-with-multiple-variables)
       - [Multiple Features](#multiple-features)
+      - [Gradient Descent For Multiple Variables](#gradient-descent-for-multiple-variables)
+      - [Gradient Descent in Practice I - Feature Scaling](#gradient-descent-in-practice-i---feature-scaling)
+      - [Gradient Descent in Practice II - Learning Rate](#gradient-descent-in-practice-ii---learning-rate)
+      - [Features and Polynomial Regression](#features-and-polynomial-regression)
   
 ### Introduction
 
@@ -182,3 +186,26 @@ Gradient Descent **minimizing** the **cost/loss** function. It not only used on 
 
 #### Multiple Features
 
+![images](images/23.png)
+
+#### Gradient Descent For Multiple Variables
+
+![images](images/24.png)
+
+![images](images/25.png)
+
+#### Gradient Descent in Practice I - Feature Scaling
+
+![images](images/26.png)
+
+![images](images/27.png)
+
+#### Gradient Descent in Practice II - Learning Rate
+
+![images](images/28.png)
+
+![images](images/29.png)
+
+#### Features and Polynomial Regression
+
+![images](images/30.png)
