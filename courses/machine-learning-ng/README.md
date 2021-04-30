@@ -23,7 +23,8 @@ What is machine learning? You probably use it dozens of times a day without even
       - [Gradient Descent For Multiple Variables](#gradient-descent-for-multiple-variables)
       - [Gradient Descent in Practice I - Feature Scaling](#gradient-descent-in-practice-i---feature-scaling)
       - [Gradient Descent in Practice II - Learning Rate](#gradient-descent-in-practice-ii---learning-rate)
-      - [Features and Polynomial Regression](#features-and-polynomial-regression)
+      - [Features and Polynomial Regressioen](#features-and-polynomial-regressioen)
+      - [Normal Equation](#normal-equation)
   
 ### Introduction
 
@@ -206,6 +207,8 @@ Gradient Descent **minimizing** the **cost/loss** function. It not only used on 
 
 ![images](images/29.png)
 
-#### Features and Polynomial Regression
-
+#### Features and Polynomial Regressioen
+**e**
 ![images](images/30.png)
+
+#### Normal Equation

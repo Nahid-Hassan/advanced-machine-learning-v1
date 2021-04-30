@@ -95,5 +95,4 @@ print(model.weights)
 # predict new data
 print('The predicted housing price in(100$) :', model.predict([7.0])[0][0])
 # The predicted housing price in(100$) : 4.0196657
-
 ```
