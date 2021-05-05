@@ -14,6 +14,14 @@
       - [Data Science Topics and Algorithms](#data-science-topics-and-algorithms)
       - [Cloud for Data Science](#cloud-for-data-science)
     - [Data Science Topics](#data-science-topics)
+      - [Foundations of Big Data](#foundations-of-big-data)
+      - [What is Hadoop?](#what-is-hadoop)
+      - [How Big Data is Driving Digital Transformation](#how-big-data-is-driving-digital-transformation)
+      - [Data Science Skills & Big Data](#data-science-skills--big-data)
+      - [What is the Difference](#what-is-the-difference)
+      - [Neural Networks and Deep Learning](#neural-networks-and-deep-learning)
+      - [Applications of Machine Learning](#applications-of-machine-learning)
+    - [Data Science in Business](#data-science-in-business)
 
 ### Defining Data Science and What Data Scientists Do
 
@@ -46,10 +54,10 @@ My advice to an aspiring data scientist is to be `curious`, **extremely** `argum
 
 **Summary**:
 
-- Data science is the study of large quantities of data, which can reveal insights that help organizations make strategic choices.
-- There are  many paths to a career in data science; most, but not all, involve a little math, a little science, and a lot of curiosity about data.
-- New data scientists need to be curious, judgemental and argumentative.
-- Why data science is considered the sexiest job in the 21st century, paying high salaries for skilled workers.
+> - Data science is the study of large quantities of data, which can reveal insights that help organizations make strategic choices.
+> - There are  many paths to a career in data science; most, but not all, involve a little math, a little science, and a lot of curiosity about data.
+> - New data scientists need to be curious, judgemental and argumentative.
+>- Why data science is considered the sexiest job in the 21st century, paying high salaries for skilled workers.
 
 #### A day in the Life of a Data Scientist
 
@@ -74,6 +82,8 @@ Cloud is a godsend for data scientists. Primarily because you're able to take yo
 - Accessing algorithms, tools, and data through the Cloud enables Data Scientists to stay up-to-date and collaborate easily.
 
 ### Data Science Topics
+
+#### Foundations of Big Data
 
 In this digital world, everyone leaves a `trace`. From our travel habits to our workouts and entertainment, the increasing number of internet connected devices that we interact with on a daily basis record vast amounts of data about
 us. There’s even a name for it: Big Data. Ernst and Young offers the following definition:
@@ -105,3 +115,51 @@ Let's look at some examples of the V's in action.
 ![images](images/3.png)
 
 - Tools such as Apache Spark, Hadoop and its ecosystem provide ways to extract, load, analyze, and process the data across distributed compute resources, providing new insights and knowledge. This gives organizations more ways to connect with their customers and enrich the services they offer. So next time you strap on your smartwatch, unlock your smartphone, or track your workout, remember your data is starting a journey that might take it all the way around the world, through big data analysis, and back to you.
+
+#### What is Hadoop?
+
+Hadoop is an open-source software framework for storing data and running applications on clusters of commodity hardware. It provides massive storage for any kind of data, enormous processing power and the ability to handle virtually limitless concurrent tasks or jobs.
+
+**Diff BTW Statistics and Data Science**
+
+According to Dr. White, most of the components of data science, such as probability, statistics, linear algebra, and programming, have been around for many decades but now we have the computational capabilities to apply combine them and come up with new techniques and learning algorithms.
+
+#### How Big Data is Driving Digital Transformation
+
+>   This digital change integrates digital technology into all areas of an organization resulting in fundamental changes to how it operates and delivers value to customers. It is an organizational and cultural change driven by Data Science, and especially Big Data. 
+
+#### Data Science Skills & Big Data
+
+- Numpy, Pandas, How to Program, Python, Jupyter Notebook etc.
+
+**Summary**:
+
+- How Big Data is defined by the Vs: Velocity, Volume, Variety, Veracity, and Value.
+- How Hadoop and other tools, combined with distributed computing power,  are used to handle the demands of Big Data.  
+- What skills are required to analyse Big Data. 
+- About the process of Data Mining, and how it produces results.
+  
+#### What is the Difference
+
+In data science, there are many terms that are used interchangeably, so let's explore the most common ones. The term big data refers to data sets that are so massive, so quickly built, and so varied that they defy traditional analysis methods such as you might perform with a relational database. The concurrent development of enormous compute power in distributed networks and new tools and techniques for data analysis means that organizations now have the power to analyze these vast data sets. A new knowledge and insights are becoming available to everyone. Big data is often described in terms of five V's; velocity, volume, variety, veracity, and value. Data mining is the process of automatically searching and analyzing data, discovering previously unrevealed patterns. It involves preprocessing the data to prepare it and transforming it into an appropriate format. Once this is done, insights and patterns are mined and extracted using various tools and techniques ranging from simple data visualization tools to machine learning and statistical models. Machine learning is a subset of AI that uses computer algorithms to analyze data and make intelligent decisions based on what it is learned without being explicitly programmed. Machine learning algorithms are trained with large sets of data and they learn from examples. They do not follow rules-based algorithms. Machine learning is what enables machines to solve problems on their own and make accurate predictions using the provided data. Deep learning is a specialized subset of machine learning that uses layered neural networks to simulate human decision-making. Deep learning algorithms can label and categorize information and identify patterns. It is what enables AI systems to continuously learn on the job and improve the quality and accuracy of results by determining whether decisions were correct. Artificial neural networks, often referred to simply as neural networks, take inspiration from biological neural networks, although they work quite a bit differently. A neural network in AI is a collection of small computing units called neurons that take incoming data and learn to make decisions over time. Neural networks are often layer-deep and are the reason deep learning algorithms become more efficient as the data sets increase in volume, as opposed to other machine learning algorithms that may plateau as data increases. Now that you have a broad understanding of the differences between some key AI concepts, there is one more differentiation that is important to understand that between Artificial Intelligence and Data Science. Data Science is the process and method for extracting knowledge and insights from large volumes of disparate data. It's an interdisciplinary field involving mathematics, statistical analysis, data visualization, machine learning, and more. It's what makes it possible for us to appropriate information, see patterns, find meaning from large volumes of data and use it to make decisions that drive business. Data Science can use many of the AI techniques to derive insight from data. For example, it could use machine learning algorithms and even deep learning models to extract meaning and draw inferences from data. There is some interaction between AI and Data Science, but one is not a subset of the other. Rather, Data Science is a broad term that encompasses the entire data processing methodology while AI includes everything that allows computers to learn how to solve problems and make intelligent decisions. Both AI and Data Science can involve the use of big data. That is, significantly large volumes of data.
+
+#### Neural Networks and Deep Learning
+
+Some application of deep learning,
+
+- Speech Recognition
+- Digit Recognition
+- Image Recognition
+
+#### Applications of Machine Learning
+
+Everybody now deals with machine learning. But recommender systems are certainly one of the major applications. Classifications, cluster analysis, trying to find some of the marketing questions from 20 years ago, market basket analysis, what goods tend to be bought together. That was computationally a very difficult problem, I mean we're now doing that all the time with machine learning. So predictive analytics is another area of machine learning. We're using new techniques to predict things that statisticians don't particularly like. Decision trees, Bayesian Analysis, naive Bayes, lots of different techniques. The nice thing about them is that in packages like R now, you really have to understand how these techniques can be used and you don't have to know exactly how to do them but you have to understand what their meanings are. Precision versus recall and the problems of over sampling and over fitting so you can, someone who knows a little about data science can apply these techniques but they really need to know, maybe not the details of the technique as much as how, what the trade-offs are. So, some applications of machine learning in fintech are probably the - couple of different things I could talk about there. One of them is recommendations. Right, so, when you use Netflix, or you use Facebook, or a lot of different software services, the recommendations are served to you. Meaning, "Hey, you're a user, you've watched this show, so maybe you'd like to see this other show." Right, or, you follow this person, so maybe you should follow this other person. It's actually kind of the same thing in fintech, right. Because you've looked at - if you're an investment professional, right, and because you've looked at this investment idea, it might be really cool for you to look at this other investment idea, which is kind of similar. Right, it's a similar kind of asset, it's a similar kind of company. Or it's a similar kind of technique for doing the investment. So, We can apply recommendations using machine learning throughout a lot of different parts of fintech. Another one that people talk about, and is important especially on retail, in the retail aspects of banking and finance is fraud detection. Trying to determine whether a charge that comes a credit card is fraudulent or not, in real time, is a machine learning problem. Right, you have to learn from all of the transactions that have happened previously and build a model, and when the charge comes through you have to compute all this stuff and say, "Yeah we think that's ok," or "hmm, that's not so good. Let's route it to, you know, our fraud people to check."
+
+**Summary**:
+
+- The differences between some common Data Science terms, including Deep Learning and Machine Learning.
+- Deep Learning is a type of Machine Learning that simulates human decision-making using neural networks.
+- Machine Learning has many applications, from recommender systems that provide relevant choices for customers on commercial websites, to detailed analysis of financial markets.
+- How to use regression to analyze data.
+  
+### Data Science in Business
