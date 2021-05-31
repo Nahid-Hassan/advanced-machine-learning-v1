@@ -110,7 +110,7 @@ capture = cv2.VideoCapture(0)
 capture.set(3, 240)
 # set height, which id number is 4
 capture.set(4, 480)
-# set brightness of webcamp, which id number is 10
+# set brightness of webcam, which id number is 10
 capture.set(10, 100)
 
 
